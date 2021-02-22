@@ -286,7 +286,7 @@
         <td>{{$viewseachs->xaPhuong->tenXaPhuong}} - {{$viewseachs->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
         
 
-        <td><a href="{{route('chitietdulieumo',[$viewseachs->id])}}" > Xem</a></td>
+        <td style="text-align: center;"><a title="Xem chi tiết" href="{{route('chitietdulieumo',[$viewseachs->id])}}" > <i class="fa fa-list" aria-hidden="true"></i></a></td>
       
       </tr>
       @endforeach  
@@ -322,7 +322,7 @@
         <td>{{$dulieumo->xaPhuong->tenXaPhuong}} - {{$dulieumo->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
         
 
-        <td><a href="{{route('chitietdulieumo',[$dulieumo->id])}}" > <i class="fa fa-list-alt" aria-hidden="true"></i></a></td>
+        <td><a title="Xem chi tiết" href="{{route('chitietdulieumo',[$dulieumo->id])}}" > <i class="fa fa-list" aria-hidden="true"></i></a></td>
         <!-- <td> 
           <a title="Sửa" href="{{route('suadulieumo',[$dulieumo->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
           <a title="Chuyển đổi dữ liệu mỏ"   href="{{route('getxoadulieumo',[$dulieumo->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>

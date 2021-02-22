@@ -147,9 +147,7 @@ class controllerPheduyetTruLuong extends Controller
 
       }
       
-
-
-
+                                 
       $hoSoCapPhepPheDuyetTruLuongid = hoSoCapPhepPheDuyetTruLuong::find($id);
       $hoSoCapPhepPheDuyetTruLuongid->delete();
       $fileDinhKemGiayPhepids=fileDinhKemGiayPhep::where('id_HoSo',$id)->where('id_loaiHoSo',3)->get();
@@ -182,38 +180,98 @@ class controllerPheduyetTruLuong extends Controller
 
    
    public function suatruluong($id){
-
+    $chucVus=chucVu::all();
     $hoSoCapPhepPheDuyetTruLuongBD =  hoSoCapPhepPheDuyetTruLuong::find($id);
+    $filedinhkemgiaypheps=fileDinhKemGiayPhep::where('id_HoSo',$id)->where('id_loaiHoSo','3')->get();
 
-    return view('hosopheduyettruluong.suatruluong',['hoSoCapPhepPheDuyetTruLuongBD'=>$hoSoCapPhepPheDuyetTruLuongBD]);
+    $filedinhkembandos=fileDinhKemBanDo::where('id_HoSo',$id)->where('id_loaiHoSo','3')->get();
+
+    return view('hosopheduyettruluong.suatruluong',['hoSoCapPhepPheDuyetTruLuongBD'=>$hoSoCapPhepPheDuyetTruLuongBD,'chucVus'=>$chucVus,"filedinhkemgiaypheps"=>$filedinhkemgiaypheps,"filedinhkembandos"=>$filedinhkembandos]);
     unset($hoSoCapPhepPheDuyetTruLuongBD);
+    unset($chucVus);
+     unset($filedinhkemgiaypheps);
+      unset($filedinhkembandos);
   }
 
+
+
 public function suatruluongpost($id,Request $req){
+
+  $hoSoCapPhepPheDuyetTruLuongedit=hoSoCapPhepPheDuyetTruLuong::find($id);
   
-      if($req ->hasFile('fileBanDo')){
-          $fileDinhKemBanDos = $req->file('fileBanDo');
-          foreach ($fileDinhKemBanDos as $fileDinhKemBanDo) {
-            $tenAnhBanDo = $fileDinhKemBanDo->getClientOriginalName();
-            $tenAnhMoiBanDo =str_random(4)."_".$tenAnhBanDo;
-            while(file_exists("public/tailieu/".$tenAnhMoiBanDo))
+        $hoSoCapPhepPheDuyetTruLuongedit ->soGiayPhepPheDuyet =$req ->soGiayPhepPheDuyet;
+        $hoSoCapPhepPheDuyetTruLuongedit ->ngayGiayPhep =$req ->ngayGiayPhep;
+        $hoSoCapPhepPheDuyetTruLuongedit ->tenGiayPhep =$req ->tenGiayPhep;
+        $hoSoCapPhepPheDuyetTruLuongedit ->nguoiKy =$req ->nguoiKy;
+        $hoSoCapPhepPheDuyetTruLuongedit ->id_chucVu =$req ->id_chucVu;
+        $hoSoCapPhepPheDuyetTruLuongedit ->tongTruLuong =$req ->tongTruLuong;
+        $hoSoCapPhepPheDuyetTruLuongedit ->donVi =$req ->donVi;
+        $hoSoCapPhepPheDuyetTruLuongedit ->save();
+
+        if($req->hasFile('fileGiayPhep')){
+
+          $filedinhkemgiaypheps=fileDinhKemGiayPhep::where('id_HoSo',$id)->where('id_loaiHoSo',3)->get();
+
+          foreach ( $filedinhkemgiaypheps as $filedinhkemgiayphep) {
+            unlink("public/tailieu/".$filedinhkemgiayphep->tenFile);
+            $filedinhkemgiayphep->delete();
+          }
+
+
+          $filedinhkemgiaypheps = $req->file('fileGiayPhep');
+
+          foreach ($filedinhkemgiaypheps as $filedinhkemgiayphep) {
+            $tenAnh = $filedinhkemgiayphep->getClientOriginalName();
+            $tenAnhmoi =str_random(4)."_".$tenAnh;
+            while(file_exists("public/tailieu/".$tenAnhmoi))
             {
 
-              $tenAnhMoiBanDo =str_random(4)."_".$tenAnhBanDo;
+              $tenAnhmoi =str_random(4)."_".$tenAnh;
             }
-            $fileDinhKemBanDo->move("public/tailieu/",$tenAnhMoiBanDo);
+            $filedinhkemgiayphep->move("public/tailieu/",$tenAnhmoi);
+
+            \DB::table('filedinhkemgiayphep')->insert([
+              'id_HoSo' => $id,
+              'id_loaiHoSo'=>'3',
+              'tenFile'=> $tenAnhmoi
+            ]); 
+          }
+
+        }
+
+
+if($req->hasFile('fileBanDo')){
+
+          $filedinhkembandos=fileDinhKemBanDo::where('id_HoSo',$id)->where('id_loaiHoSo',3)->get();
+
+          foreach ( $filedinhkembandos as $filedinhkembando) {
+            unlink("public/tailieu/".$filedinhkembando->tenFile);
+            $filedinhkembando->delete();
+          }
+
+
+          $filedinhkembandos = $req->file('fileBanDo');
+
+          foreach ($filedinhkembandos as $filedinhkembando) {
+            $tenAnh = $filedinhkembando->getClientOriginalName();
+            $tenAnhmoi =str_random(4)."_".$tenAnh;
+            while(file_exists("public/tailieu/".$tenAnhmoi))
+            {
+
+              $tenAnhmoi =str_random(4)."_".$tenAnh;
+            }
+            $filedinhkembando->move("public/tailieu/",$tenAnhmoi);
 
             \DB::table('fileDinhKemBanDo')->insert([
               'id_HoSo' => $id,
               'id_loaiHoSo'=>'3',
-              'tenFile'=> $tenAnhMoiBanDo
+              'tenFile'=> $tenAnhmoi
             ]); 
           }
+
         }
 
-
-return redirect('khoang-san/ho-so-phe-duyet-tru-luong-khoang-san')->with('messgsua','sua thành công');
-
+return redirect('khoang-san/ho-so-phe-duyet-tru-luong-khoang-san')->with('messgsua','Sửa thành công');
 
 }
 

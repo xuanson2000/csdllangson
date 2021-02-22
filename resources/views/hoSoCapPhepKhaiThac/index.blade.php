@@ -83,7 +83,7 @@
     		<th>Thời gian khai thác</th>
     		
     		<th>Lần cấp phép</th>
-        <th>Thao tác</th>
+        <th>Chi tiết</th>
     	</tr>
     </thead>
     <tbody>
@@ -108,17 +108,16 @@
     		<td>{{$hoSoCapPhepKhaiThac->thoigiancapphepkhaithac}} năm</td>
     		
     		
-    		<td>{{$hoSoCapPhepKhaiThac->lancapphep}} </td>
+    		<td style="text-align: center;">{{$hoSoCapPhepKhaiThac->lancapphep}} </td>
 
 
-    		<td> 
-          <a  title="chi tiết" href="{{route('chitietcapphepkhaithac',[$hoSoCapPhepKhaiThac ->id])}}" > <i class="fa fa-folder-open" aria-hidden="true"></i></a>/
-
-    			<a title="Sửa" href="{{route('suakhaithac',[$hoSoCapPhepKhaiThac->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          /  
-    			<a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosocapphepkhaithac',[$hoSoCapPhepKhaiThac->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a> /
+    		<td style="text-align: center;"> 
+          <a  title="chi tiết" href="{{route('chitietcapphepkhaithac',[$hoSoCapPhepKhaiThac ->id])}}" ><i class="fa fa-list" aria-hidden="true"></i></a>
+<!-- 
+    			<a title="Sửa" href="{{route('suakhaithac',[$hoSoCapPhepKhaiThac->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;
+    			<a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosocapphepkhaithac',[$hoSoCapPhepKhaiThac->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>&nbsp;
          
-          <a title="chuyển đổi" href="{{route('chuyendoikhaithac',[$hoSoCapPhepKhaiThac->id])}}"><i class="fa fa-exchange" aria-hidden="true"></i></a> 
+          <a title="chuyển đổi" href="{{route('chuyendoikhaithac',[$hoSoCapPhepKhaiThac->id])}}"><i class="fa fa-exchange" aria-hidden="true"></i></a>  -->
     		</td>
     	</tr>
         @endforeach

@@ -113,7 +113,6 @@
     		<th>Vị trí hành chính</th>
     		<th>Tổng trữ lượng</th>
     		<th>Chi tiết</th>
-    		<th>Thao tác</th>
     	</tr>
     </thead>
     <tbody>
@@ -126,10 +125,13 @@
     		<td>{{$hoSoPheDuyetTruLuong->tongTruLuong}} {{$hoSoPheDuyetTruLuong->donVi}}</td>
     		
     		
-    		<td><a href="{{route('chitietpheduyettrucluong',[$hoSoPheDuyetTruLuong ->id])}}" > XEM</a></td>
-    		<td> 
-    			<a title="Sửa" href="{{route('suatruluong',[$hoSoPheDuyetTruLuong ->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
-    			<a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosopheduyet',[$hoSoPheDuyetTruLuong->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+    		
+    		<td style="text-align: center;"> 
+          <a href="{{route('chitietpheduyettrucluong',[$hoSoPheDuyetTruLuong ->id])}}" > <i class="fa fa-list" aria-hidden="true"></i></a>&nbsp;
+
+    			<!-- <a title="Sửa" href="{{route('suatruluong',[$hoSoPheDuyetTruLuong ->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> &nbsp;
+    			
+          <a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosopheduyet',[$hoSoPheDuyetTruLuong->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a> -->
     		</td>
     	</tr>
         @endforeach
@@ -146,7 +148,7 @@
     <th style="color: blue;"></th>
     <th style="color: blue;"> </th>
     <th style="color: blue;"></th>
-    <th style="color: blue;"></th>
+ 
   </tr>
 </tfoot>
   </table>

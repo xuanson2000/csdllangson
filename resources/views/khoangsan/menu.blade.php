@@ -74,8 +74,8 @@
 
                 <li><a href="{{route('dlmo')}}"><i class="fa fa-circle-o"></i>Dữ liệu mỏ khoáng sản</a></li>
 
-                <li><a href="{{route('dldongmo')}}"><i class="fa fa-circle-o"></i>Dữ liệu đóng cửa mỏ</a></li>
-
+                <!-- <li><a href="{{route('dldongmo')}}"><i class="fa fa-circle-o"></i>Dữ liệu đóng cửa mỏ</a></li>
+ -->
                 <li><a href="{{route('dulieucamhanchekhaithac')}}"><i class="fa fa-circle-o"></i>DL Vùng cấm và hạn chế khai thác</a></li>
                <li><a href="{{route('dulieuvungquyhoachkhaithac')}}"><i class="fa fa-circle-o"></i>DL Vùng quy hoạch khai thác</a></li>
                 

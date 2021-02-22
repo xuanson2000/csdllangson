@@ -54,8 +54,8 @@
 			<button style="margin-top: 35px; margin-left:10px;" type="submit" class="btn btn-primary"><img src="public/anh/search-3-16.png"> Tra cứu</button>
 		</div>
 
-
 	</form> -->
+  
  <div class="col-md-10 form-group" style="margin-top: 10px;">
   <h4 style=" color: white; font-weight: bold;">DANH SÁCH HỒ SƠ THĂM DÒ KHOÁNG SẢN</h4>
 </div>
@@ -108,7 +108,7 @@
     <th>Diện tích thăm dò</th>
     <th >Thời gian thăm dò</th>
     <th>Lần thăm dò</th>
-    <th>Thao tác</th>
+    <th>Chi tiết</th>
   </tr>
 </thead>
 <tbody>
@@ -122,11 +122,12 @@
   <td>{{$hoSoCapPhepthamdo->dienTichThamDo}} ha</td>
   <td>{{$hoSoCapPhepthamdo->thoiGianThamDo}} tháng</td>
 
-  <td>{{$hoSoCapPhepthamdo->lanthamdo}}</td>
-  <td> 
-    <a href="{{route('chitietthamdo',[$hoSoCapPhepthamdo ->id])}}" > <i class="fa fa-folder-open" aria-hidden="true"></i></a>/
-   <a title="Sửa" href="{{route('suathamdo',[$hoSoCapPhepthamdo ->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
-   <a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosothamdo',[$hoSoCapPhepthamdo->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+  <td style="text-align: center;" >{{$hoSoCapPhepthamdo->lanthamdo}}</td>
+  <td style="text-align: center;"> 
+    <a title="Xem chi tiết" href="{{route('chitietthamdo',[$hoSoCapPhepthamdo ->id])}}" > <i class="fa fa-list" aria-hidden="true"></i></a>
+
+  <!--  <a title="Sửa" href="{{route('suathamdo',[$hoSoCapPhepthamdo ->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  &nbsp; 
+   <a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosothamdo',[$hoSoCapPhepthamdo->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a> -->
  </td>
 </tr>
 @endforeach
@@ -148,17 +149,7 @@
 </tfoot>
 </table>
 
-
-
-
-
-
-
 </div>
-
-
-
-
  
 <script>
 

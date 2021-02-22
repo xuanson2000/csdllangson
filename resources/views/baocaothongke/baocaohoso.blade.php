@@ -1,7 +1,7 @@
 
 @extends('khoangsan.layout')
 @section("content12")
-
+    
 <style type="text/css">
   th{
     text-align: center;
@@ -40,6 +40,19 @@
 	
 		<button style="margin-top: 35px; margin-left:10px;" type="submit" class="btn btn-primary"><img src="public/anh/search-3-16.png"> Tìm kiếm</button>
 
+   @if(isset($txtthongkehosos) && $txtthongkehosos!=null)
+  <div class="btn-group" >
+    <button type="button" class="btn btn-primary">Sony</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Tablet</a></li>
+      <li><a href="#">Smartphone</a></li>
+    </ul>
+  </div>
+
+   @endif
    
 
 	</form>
@@ -78,7 +91,7 @@
 @if(isset($txtthongkehosos) && $txtthongkehosos!=null)
    @if($loaihoso==1)
 
-  <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM</h4>
+  <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM HỒ SƠ THĂM DÒ KHOÁNG SẢN</h4>
              
   <table class="table table-bordered">
     <thead>
@@ -115,7 +128,7 @@
     </tbody>
   </table>
   @elseif($loaihoso==2)
- <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM</h4>
+ <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM HỒ SƠ PHÊ DUYỆT TRỮ LƯỢNG KHOÁNG SẢN</h4>
   <table class="table table-bordered">
   	<thead>
   		<tr style="background-color: #AAC1C6;">
@@ -153,7 +166,7 @@
 
 
 @elseif($loaihoso==3)
-<h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM</h4>
+<h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM HỒ SƠ CẤP PHÉP KHAI THÁC KHOÁNG SẢN</h4>
 <table class="table table-bordered">
     <thead>
     	<tr style="background-color: #AAC1C6;">

@@ -7,7 +7,14 @@
 <div class="model">
 	<div class="row" style="background-color: #4276BB; width: 95%; margin: 0 auto;">
 	 <h4 style="float: left; margin: 10px 10px 10px 10px; color: white; ">Hồ sơ phê duyệt trữ lượng: <span style="color: #FFB724; font-weight: bold;">  {{$hoSoPheDuyetTruLuongid->hoSoCapPhepthamdo->duLieuMo->tenMo}} </span></h4>
-          <a href="{{route('truluongkhoangsan')}}" type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-danger" > <i class="fa fa-times" aria-hidden="true"></i></a>
+
+   <a title="Đóng" href="{{route('truluongkhoangsan')}}" type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-info" > <i class="fa fa-times" aria-hidden="true"></i></a>
+   
+    <a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosopheduyet',[$hoSoPheDuyetTruLuongid->id])}}"  type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+     <a title="Sửa" href="{{route('suatruluong',[$hoSoPheDuyetTruLuongid ->id])}}" type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-warning" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+
 	</div>
 	<div class="row" style="width: 95%; background-color: #FAFBFC; padding-top: 20px;padding-bottom: 10px; margin: 0 auto; ">
 

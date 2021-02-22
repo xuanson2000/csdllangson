@@ -8,6 +8,7 @@
 	<div class="row" style="background-color: #4276BB; width: 95%; margin: 0 auto;">
     <h4 style="float: left; margin: 10px 10px 10px 10px; color: white;">Hồ sơ cấp phép thăm dò: <span style="color: #FFB724; font-weight: bold;">  {{$hoSoCapPhepthamdoid->duLieuMo->tenMo}} </span></h4>
           
+    <a  title="Đóng"  href="{{route('thamdokhoangsan')}}" type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-info" ><i class="fa fa-times" aria-hidden="true"></i></a>
 
     <a  title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"   href="{{route('xoahosothamdo',[$hoSoCapPhepthamdoid->id])}}" type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i></a>
 
