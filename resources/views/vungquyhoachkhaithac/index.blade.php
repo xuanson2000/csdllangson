@@ -171,7 +171,7 @@
         <td>{{$quyHoachKhaiThac->giaiDoanQuyHoach}}</td>
         <td>{{$quyHoachKhaiThac->phamViQuyHoach}}</td>
         
-        <td>{{$quyHoachKhaiThac->file}}</td>
+        <td><a href="public/tailieu/{{$quyHoachKhaiThac->file}}">{{$quyHoachKhaiThac->file}}</a> </td>
          
     
         <td> 

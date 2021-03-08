@@ -994,6 +994,21 @@ Route::get('/ket-qua-bao-cao-thong-ke',[
 ]);
 
 
+Route::get('/xuat-ket-qua-bao-cao-thong-ke/{loaihoso}/{nam}',[
+  'as'=>'xuatthongkehoso',
+  'uses'=>'controllerBaocaothongke@xuatthongkehoso',
+  'middleware'=>'Checkquyen:thong_ke_loai_hs'
+]);
+
+
+Route::get('/xuat-ket-qua-bao-cao-thong-ke-pdf/{loaihoso}/{nam}',[
+  'as'=>'xuatthongkehosopdf',
+  'uses'=>'controllerBaocaothongke@xuatthongkehosopdf',
+  'middleware'=>'Checkquyen:thong_ke_loai_hs'
+]);
+
+
+
 Route::get('/bao-cao-theo-nam-khai-thac',[
   'as'=>'baocaonamkhaithac',
   'uses'=>'controllerBaocaothongke@baocaonamkhaithac',
@@ -1009,8 +1024,19 @@ Route::get('/ket-qua-bao-cao-theo-nam-khai-thac',[
 
 
 
+Route::get('/ket-qua-bao-cao-theo-nam-khai-thac-excel/{sonamconlai}',[
+  'as'=>'kqbaocaonamkhaithacexcel',
+  'uses'=>'controllerBaocaothongke@kqbaocaonamkhaithacexcel',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
 
 
+
+Route::get('/ket-qua-bao-cao-theo-nam-khai-thac-pdf/{sonamconlai}',[
+  'as'=>'kqbaocaonamkhaithacpdf',
+  'uses'=>'controllerBaocaothongke@kqbaocaonamkhaithacpdf',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
 
 
 

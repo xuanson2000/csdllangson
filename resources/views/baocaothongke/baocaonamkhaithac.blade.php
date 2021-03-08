@@ -26,12 +26,21 @@
 			<label style="font-weight: bold; float:left; color: #DDE1F8;">Số năm khai thác còn lại</label>
 			<input type="number" class="form-control" id="usr" name="nam" required="">
 		</div>
-
-
-	
 		<button style="margin-top: 35px; margin-left:10px;" type="submit" class="btn btn-primary"><img src="public/anh/search-3-16.png"> Tìm kiếm</button>
 
-   
+    @if(isset($products) && $products!=null)
+    <div class="btn-group" style="margin-top: 35px; margin-left:10px;" >
+      <button type="button" class="btn btn-warning"><i class="fa fa-cloud-download" aria-hidden="true"></i> Xuất file</button>
+      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+        <span style="height: 17px;" class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{{route('kqbaocaonamkhaithacexcel',[$sonam])}}"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất file Excel</a></li>
+        <li><a href="{{route('kqbaocaonamkhaithacpdf',[$sonam])}}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Xuất file PDF</a></li>
+      </ul>
+    </div>
+
+    @endif
 
 	</form>
 	
@@ -58,9 +67,10 @@
         <th>STT</th>
         <th>Số GPKH</th>
         <th>Tên mỏ</th>
-        <th>Tên Doanh nghiệp</th>
-        <th>Vị trí hành chính</th>
-        <th>Thời gian khai thác</th>
+        <th>Doanh nghiệp KT</th>
+        <th>Vị trí mỏ</th>
+        <th>Năm bắt đầu KT</th>
+        <th>Thời gian KT</th>
         <th>Chi tiết</th>
       
       </tr>
@@ -79,7 +89,6 @@
 
         @endif
 
-
         <td>{{$product->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
 
         @if($product ->index_biendong==1)
@@ -89,6 +98,8 @@
         @endif
 
         <td>{{$product->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$product->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
+       
+       <td>{{date('d-m-Y', strtotime($product->ngaygiayphep))}}</td>
 
         <td>{{$product->thoigiancapphepkhaithac}} năm</td>
         

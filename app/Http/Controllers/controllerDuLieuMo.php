@@ -301,8 +301,8 @@ public function getxoadulieumo($id){
   public function suadulieupost(Request $req,$id){
 
       $duLieuMoEdit =duLieuMo::find($id);
-
       $duLieuMoEdit->tenMo= $req->tenMo;
+
       $duLieuMoEdit->loaiKhoangSan= $req ->loaiKhoangSan;
       $duLieuMoEdit->viTriXa= $req->viTriXa;
       $duLieuMoEdit->truLuong= $req ->truLuong;
@@ -318,7 +318,7 @@ public function getxoadulieumo($id){
       $duLieuMoEdit->donVi= $req ->donVi;
       $duLieuMoEdit->hienTrang=1;
       $duLieuMoEdit->id_user=Auth::guard('quantri')->user()->id;
-  //    $duLieuMoEdit->save();
+     $duLieuMoEdit->save();
 
 
       $toaDoEdits=DB::table('toaDo')->where('id_loaiHoSo',1)->where('id_HoSo',$id)->get();

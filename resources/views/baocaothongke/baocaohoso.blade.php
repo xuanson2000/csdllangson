@@ -1,4 +1,3 @@
-
 @extends('khoangsan.layout')
 @section("content12")
     
@@ -41,14 +40,14 @@
 		<button style="margin-top: 35px; margin-left:10px;" type="submit" class="btn btn-primary"><img src="public/anh/search-3-16.png"> Tìm kiếm</button>
 
    @if(isset($txtthongkehosos) && $txtthongkehosos!=null)
-  <div class="btn-group" >
-    <button type="button" class="btn btn-primary">Sony</button>
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      <span class="caret"></span>
+  <div class="btn-group" style="margin-top: 35px; margin-left:10px;" >
+    <button type="button" class="btn btn-warning"><i class="fa fa-cloud-download" aria-hidden="true"></i> Xuất file</button>
+    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+      <span style="height: 17px;" class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="#">Tablet</a></li>
-      <li><a href="#">Smartphone</a></li>
+      <li><a href="{{route('xuatthongkehoso',[$loaihoso,$namtimkiem])}}"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất file Excel</a></li>
+      <li><a href="{{route('xuatthongkehosopdf',[$loaihoso,$namtimkiem])}}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Xuất file PDF</a></li>
     </ul>
   </div>
 
@@ -88,10 +87,15 @@
  {{Session::get('messgxoa')}}</div>
  @endif
 
+
 @if(isset($txtthongkehosos) && $txtthongkehosos!=null)
    @if($loaihoso==1)
 
-  <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM HỒ SƠ THĂM DÒ KHOÁNG SẢN</h4>
+  <h4 style="margin-bottom: 20px; margin-top: 20px;">Kết quả tìm kiếm: <span style="color: #0C5EBD;"> Hồ sơ thăm dò khoáng sản {{$namtimkiem}}</span>
+  <br>
+    <span style="color: red; font-size: 15px;">( {{$counths}} Hồ sơ )</span> 
+   </h4>
+
              
   <table class="table table-bordered">
     <thead>
@@ -122,13 +126,14 @@
     		
     	</tr>
         @endforeach
-
         
-      
     </tbody>
   </table>
   @elseif($loaihoso==2)
- <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM HỒ SƠ PHÊ DUYỆT TRỮ LƯỢNG KHOÁNG SẢN</h4>
+  <h4 style="margin-bottom: 20px; margin-top: 20px;">Kết quả tìm kiếm: <span style="color: #0C5EBD;"> Hồ sơ phê duyệt trữ lượng khoáng sản {{$namtimkiem}}</span>
+  <br>
+    <span style="color: red; font-size: 15px;">( {{$counths}} Hồ sơ )</span> 
+   </h4>
   <table class="table table-bordered">
   	<thead>
   		<tr style="background-color: #AAC1C6;">
@@ -166,7 +171,10 @@
 
 
 @elseif($loaihoso==3)
-<h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM HỒ SƠ CẤP PHÉP KHAI THÁC KHOÁNG SẢN</h4>
+ <h4 style="margin-bottom: 20px; margin-top: 20px;">Kết quả tìm kiếm: <span style="color: #0C5EBD;"> Hồ sơ cấp phép khai thác khoáng sản {{$namtimkiem}}</span>
+  <br>
+    <span style="color: red; font-size: 15px;">( {{$counths}} Hồ sơ )</span> 
+   </h4>
 <table class="table table-bordered">
     <thead>
     	<tr style="background-color: #AAC1C6;">
@@ -271,4 +279,3 @@
       });
     });  </script>
   @endsection
-s
