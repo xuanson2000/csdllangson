@@ -17,7 +17,7 @@
 </style>
 
 <div class="container" style="background-color: white; padding: 20px 20px 20px 30px; width: 100%;">
-   <h4>CẬP NHẬT TEN KHOÁNG SẢN</h4>    
+   <h4>CẬP NHẬT TÊN KHOÁNG SẢN</h4>    
 
    <div class="row" style="margin-left: 1px; margin-right: 1px; margin-bottom: 10px; background-color: #ACB4BF;">
 

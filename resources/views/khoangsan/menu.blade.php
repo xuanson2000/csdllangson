@@ -96,7 +96,7 @@
                 <li><a href="{{route('thamdokhoangsan')}}"><i class="fa fa-circle-o"></i>Thăm dò khoáng sản</a></li>
                 <li><a href="{{route('truluongkhoangsan')}}"><i class="fa fa-circle-o"></i>Phê duyệt trữ lượng</a></li>
                 <li><a href="{{route('capphepkhaithac')}}"><i class="fa fa-circle-o"></i>Cấp phép khai thác</a></li>
-                <li><a href="{{route('biendongkhoangsan')}}"><i class="fa fa-circle-o"></i>Biến động khoáng sản</a></li>
+                <li><a href="{{route('biendongkhoangsan')}}"><i class="fa fa-circle-o"></i>Thu hồi khoáng sản</a></li>
 
               </ul>
             </li>

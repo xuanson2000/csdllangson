@@ -209,18 +209,7 @@
       @endforeach  
 
     </tbody>
-  <!-- <tfoot >
-    <tr>
-      <th style="color: blue;">số quyết định</th>
-      <th style="color: blue;" >tên báo cáo</th>
-      <th style="color: blue;"></th>
-      <th style="color: blue;"></th>
-      <th style="color: blue;"> </th>
-      <th style="color: blue;"></th>
-        
-    </tr>
-  </tfoot> -->
-   
+
   </table>
  </div>
 

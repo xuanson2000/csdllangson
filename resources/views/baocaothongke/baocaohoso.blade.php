@@ -183,6 +183,7 @@
     		<th>Tên mỏ</th>
     		<th>Tên Doanh nghiệp</th>
     		<th>Vị trí hành chính</th>
+        <th>Năm bắt đầu khai thác</th>
     		<th>Thời gian khai thác</th>
     		<th>Chi tiết</th>
     	
@@ -192,27 +193,24 @@
     	@foreach($txtthongkehosos as $txtthongkehoso)
     	<tr>
     		<td>{{$loop->index+1}}</td>
-        @if($txtthongkehoso->index_biendong==1)
-        <?php
-        $hoSoBienDongKhoangSan=App\hoSoBienDongKhoangSan::where('id_hoSoCapPhepKhaiThac',$txtthongkehoso->id)->first();
-        ?>
-    		<td>{{$hoSoBienDongKhoangSan->soGiayPhep}}</td>
-        @else
+        
           <td>{{$txtthongkehoso->soGiayPhepKhaiThac}}</td>
+    		  <td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
 
-        @endif
+       
+        @if($txtthongkehoso->note==2)
+        <?php
+        $iddn=App\doanhNghiepChuyenNhuong::where('id_doanhnghiep',$hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->id)->first();
 
-
-    		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
-
-        @if($txtthongkehoso ->index_biendong==1)
-        <td>{{$hoSoBienDongKhoangSan->doanhNghiepChuyenNhuong->tenDoanhNghiep}}</td>
+        ?>
+        <td>{{$iddn->tenDoanhNghiep}}</td>
         @else
-         <td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
+        <td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
         @endif
 
     		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
 
+        <td>{{date('d-m-Y', strtotime($txtthongkehoso->ngaygiayphep))}}</td>    
     		<td>{{$txtthongkehoso->thoigiancapphepkhaithac}} năm</td>
     		
     		

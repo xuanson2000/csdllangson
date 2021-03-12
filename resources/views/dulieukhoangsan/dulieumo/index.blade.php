@@ -136,9 +136,9 @@
            </div>
 
            <div class="form-group">
-            <label style="font-weight: bold; float:left; ">Nhóm khoáng sản <span style="color: red;">(*)</span></label>
+            <label style="font-weight: bold; float:left; ">Loại hình khoáng sản <span style="color: red;">(*)</span></label>
             <select class="form-control" name="nhomKhoangSan" id="idnhomKhoangSan" required >
-              <option value="">Chọn quy Nhóm khoáng sản </option>
+              <option value="">Chọn loại hình khoáng sản </option>
               @foreach($nhomKhoangSans as $nhomKhoangSan)
               <option value="{{$nhomKhoangSan->id}}">{{$nhomKhoangSan->tenNhomKS}}</option>
               @endforeach
@@ -146,7 +146,7 @@
           </div>
 
           <div class="form-group">
-            <label style="font-weight: bold; float:left; ">Loại hình khoáng sản <span style="color: red;">(*)</span></label>
+            <label style="font-weight: bold; float:left; ">Tên khoáng sản <span style="color: red;">(*)</span></label>
             <select class="form-control" name="loaiKhoangSan" id="idloaiHinhKhoangSan" required >
 
             </select>
@@ -185,28 +185,28 @@
 
     </div>
     
-    <div class="col-md-4">
+<!--     <div class="col-md-4">
       <p style="color: red; font-weight: bold; font-size: 16px; border-bottom: 2px solid blue; margin-bottom: 20px;"> Tọa độ mỏ</p>
       <button id="a" type="button" class="btn btn-primary">Thêm tọa độ góc mỏ</button>
       <div class="row" style="margin-top: 10px;">
-        <p id="toadoX" class="col-md-6"> </p>
-        <p id="toadoY" class="col-md-6"> </p>
+        <p id="toadox" class="col-md-6"> </p>
+        <p id="toadox" class="col-md-6"> </p>
       </div>
       <script>
         $(document).ready(function(){
           $("#a").click(function(){
-            $("#toadoX").append(' Tọa độ X:<input type="text"  name="toaDoX[]"><br>');
+            $("#toadox").append(' Tọa độ X:<input type="text"  name="toadox[]"><br>');
           });
         });
 
         $(document).ready(function(){
           $("#a").click(function(){
-            $("#toadoY").append(' Tọa độ Y:<input type="text"  name="toaDoY[]"><br>');
+            $("#toadoy").append(' Tọa độ Y:<input type="text"  name="toadoy[]"><br>');
           });
         });
       </script>
       
-    </div>
+    </div> -->
 
   </div>
 
@@ -265,7 +265,7 @@
   <table class="table table-bordered">
       <thead>
     	<tr style="background-color: #AAC1C6;">
-    		<th>STT</th>
+    		<th>STT </th>
         <th>KÝ HIỆU MỎ</th>
     		<th>TÊN MỎ</th>
     		<th>NHÓM KHOÁNG SẢN</th>
@@ -314,7 +314,7 @@
     <tbody>
       @foreach($dulieumos as $dulieumo)
       <tr>
-        <td>{{$loop->index+1}}</td>
+        <td>{{$loop->index+1}} - {{$dulieumo->id}}</td>
         <td>{{$dulieumo->kyHieuMo}}</td>
         <td>{{$dulieumo->tenMo}}</td>
         <td>{{$dulieumo->loaiHinhKhoangSan->nhomKhoangSan->tenNhomKS}}</td>

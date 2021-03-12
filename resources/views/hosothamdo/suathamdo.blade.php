@@ -156,6 +156,23 @@
 						<input type="text" class="form-control" name="nguonKinhPhi" value="{{$hoSoCapPhepthamdoBD->nguonKinhPhi}}">
 					</div>
 
+					<div class="form-group">
+						<p style="color: red; font-weight: bold; font-size: 16px; border-bottom: 2px solid blue; margin-bottom: 20px;"> Tọa độ thăm dò</p>
+
+						@foreach($toaDoEdits as $toaDoEdit)
+
+						<div class="row" style="margin-top: 10px;">
+							<p  class="col-md-6">Tọa độ X:
+								<input type="text"  name="{{$toaDoEdit->id}}X" value="{{$toaDoEdit->toadox}}"><br>  </p>
+								<p class="col-md-6"> Tọa độ Y:
+									<input type="text"  name="{{$toaDoEdit->id}}Y" value="{{$toaDoEdit->toadoy}}"><br>  </p>
+								</div>
+
+								@endforeach
+
+
+							</div>					
+
 				</div>
 				<br>
 				<button style="float: right; margin-top: 10px; margin-right: 20px;" type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> Lưu lại</button>

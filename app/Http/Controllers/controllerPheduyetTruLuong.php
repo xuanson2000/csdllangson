@@ -230,7 +230,7 @@ public function suatruluongpost($id,Request $req){
             }
             $filedinhkemgiayphep->move("public/tailieu/",$tenAnhmoi);
 
-            \DB::table('filedinhkemgiayphep')->insert([
+            \DB::table('fileDinhKemGiayPhep')->insert([
               'id_HoSo' => $id,
               'id_loaiHoSo'=>'3',
               'tenFile'=> $tenAnhmoi

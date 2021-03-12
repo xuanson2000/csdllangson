@@ -722,7 +722,6 @@ Route::get('/chi-tiet-ho-so-tham-do-khoang-san/{id}',[
   'as'=>'biendongkhoangsan',
   'uses'=>'controllerhosothuhoitralai@index',
   'middleware'=>'Checkquyen:khoang-san'
-
 ]);
 
 
@@ -796,6 +795,18 @@ Route::post('/them-du-lieu-vung-cam-han-che-khai-thac',[
 Route::get('/xoa-du-lieu-vung-cam-han-che-khai-thac/{id}',[
   'as'=>'xoadulieucamhanchekhaithac',
   'uses'=>'controllerKsVungCamHanChe@xoadulieucamhanchekhaithac',
+  'middleware'=>'Checkquyen:khoang-san'
+]);
+
+Route::get('/sua-du-lieu-vung-cam-han-che-khai-thac/{id}',[
+  'as'=>'suadulieucamhanchekhaithac',
+  'uses'=>'controllerKsVungCamHanChe@suadulieucamhanchekhaithac',
+  'middleware'=>'Checkquyen:khoang-san'
+]);
+
+Route::post('/sua-du-lieu-vung-cam-han-che-khai-thac-post/{id}',[
+  'as'=>'suadulieucamhanchekhaithacpost',
+  'uses'=>'controllerKsVungCamHanChe@suadulieucamhanchekhaithacpost',
   'middleware'=>'Checkquyen:khoang-san'
 ]);
 
@@ -895,6 +906,19 @@ Route::get('/xoa-ho-so-tiep-nhan-giai-quyet/{id}',[
 
 ]);
 
+Route::get('/sua-ho-so-tiep-nhan-giai-quyet/{id}',[
+  'as'=>'suahosotiepnhan',
+  'uses'=>'controllerHoSoTiepNhanGiaiQuyet@suahosotiepnhan',
+  'middleware'=>'Checkquyen:khoang-san'
+
+]);
+
+Route::post('/sua-ho-so-tiep-nhan-giai-quyet-post/{id}',[
+  'as'=>'suahosotiepnhanpost',
+  'uses'=>'controllerHoSoTiepNhanGiaiQuyet@suahosotiepnhanpost',
+  'middleware'=>'Checkquyen:khoang-san'
+
+]);
 
 // tình hình thuê đất
 
@@ -904,6 +928,25 @@ Route::get('/hop-dong-thue-dat',[
   'uses'=>'controllerhopdongthudat@index',
  // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
 ]);
+
+Route::get('/sua-hop-dong-thue-dat/{id}',[
+  'as'=>'suahopdongthuedat',
+  'uses'=>'controllerhopdongthudat@suahopdongthuedat',
+ // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
+]);
+
+Route::post('/sua-hop-dong-thue-dat-post/{id}',[
+  'as'=>'suahopdongthuedatpost',
+  'uses'=>'controllerhopdongthudat@suahopdongthuedatpost',
+ // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
+]);
+
+Route::get('/xoa-hop-dong-thue-dat/{id}',[
+  'as'=>'xoahopdongthuedat',
+  'uses'=>'controllerhopdongthudat@xoahopdongthuedat',
+ // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
+]);
+
 
 
 Route::post('/them-hop-dong-thue-dat',[
@@ -939,7 +982,11 @@ Route::post('/sua-tien-cap-quyen-khai-thac-post/{id}',[
  // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
 ]);
 
-
+Route::get('/xoa-tien-cap-quyen-khai-thac/{id}',[
+  'as'=>'xoatiencapquyenkhaithac',
+  'uses'=>'controllertiencapquyen@xoatiencapquyenkhaithac',
+ // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
+]);
 
 
 // phí cải tạo môi trường
@@ -969,7 +1016,11 @@ Route::post('/sua-tien-ky-quy-phuc-hoi-moi-truong-post/{id}',[
  // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
 ]);
 
-
+Route::get('/xoa-tien-ky-quy-phuc-hoi-moi-truong/{id}',[
+  'as'=>'xoaquyphuchoimoitruong',
+  'uses'=>'controllertienkyquyphuchoimoitruong@xoaquyphuchoimoitruong',
+ // 'middleware'=>'Checkquyen:xem_ho_so_tiep_nhan_giai_quyet'
+]);
 
 
 // báo cáo thông kê
@@ -1037,6 +1088,56 @@ Route::get('/ket-qua-bao-cao-theo-nam-khai-thac-pdf/{sonamconlai}',[
   'uses'=>'controllerBaocaothongke@kqbaocaonamkhaithacpdf',
   'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
 ]);
+
+
+Route::get('/bao-cao-ho-so-dang-khai-thac',[
+  'as'=>'baocaohosodangkhaothac',
+  'uses'=>'controllerBaocaothongke@baocaohosodangkhaothac',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+
+Route::get('/bao-cao-ho-so-dang-khai-thac-excel',[
+  'as'=>'baocaohosodangkhaothacexcel',
+  'uses'=>'controllerBaocaothongke@baocaohosodangkhaothacexcel',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+Route::get('/bao-cao-ho-so-dang-khai-thac-pdf',[
+  'as'=>'baocaohosodangkhaothacpdf',
+  'uses'=>'controllerBaocaothongke@baocaohosodangkhaothacpdf',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+Route::get('/bao-cao-ho-so-thu-hoi-khai-thac',[
+  'as'=>'baocaohosothuhoi',
+  'uses'=>'controllerBaocaothongke@baocaohosothuhoi',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+Route::get('/bao-cao-ho-so-thu-hoi-khai-thac-excel',[
+  'as'=>'baocaohosothuhoiex',
+  'uses'=>'controllerBaocaothongke@baocaohosothuhoiex',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+Route::get('/bao-cao-tinh-hinh-khai-thac',[
+  'as'=>'baocaotinhinhkhaithac',
+  'uses'=>'controllerBaocaothongke@baocaotinhinhkhaithac',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+Route::get('/bao-cao-tinh-hinh-khai-thac-post',[
+  'as'=>'baocaotinhinhkhaithacpost',
+  'uses'=>'controllerBaocaothongke@baocaotinhinhkhaithacpost',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,4 @@
-
 @extends('khoangsan.layout')
-
 @section("content12")
 <style type="text/css">
 	th{
@@ -153,7 +151,38 @@
 						<input type="text" class="form-control" name="nguonKinhPhi">
 					</div>
 
+					<div class="form-group">
+						<div class="col-md-6"><label for="usr">Tọa độ thăm dò </label></div>
+						<div class="col-md-6"><button id="a" type="button" class="btn btn-primary">Thêm tọa 
+						độ góc mỏ</button>
+					    </div> 
+					</div>
+						
+					<div class="row" style="margin-top: 20px;">
+						<p id="toadox" class="col-md-6" style="margin-top: 10px;"> </p> 
+						<p id="toadoy" class="col-md-6" style="margin-top: 10px;"> </p>
+					</div>
+					<script>
+						$(document).ready(function(){
+							$("#a").click(function(){
+								$("#toadox").append(' Tọa độ X:<input type="text"  name="toadox[]"><br>');
+							});
+						});
+
+						$(document).ready(function(){
+							$("#a").click(function(){
+								$("#toadoy").append(' Tọa độ Y:<input type="text"  name="toadoy[]"><br>');
+							});
+						});
+					</script>
+
+					</div>
+
+
+
 				</div>
+
+
 				<br>
 				<button style="float: right; margin-top: 10px; margin-right: 20px;" type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> Lưu lại</button>
 			</div>

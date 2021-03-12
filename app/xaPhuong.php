@@ -19,7 +19,5 @@ class xaPhuong extends Model
      	return $this->hasManey('App\duLieuMo','viTriXa','id');
      }
 
-       public function KsVungCamHanChe(){
-     	return $this->hasManey('App\KsVungCamHanChe','id_xa','id');
-     }
+     
 }

@@ -102,10 +102,10 @@
 						</select>
 					</div>
 				</div>
-
+				<br>
+				<button style="float: right; margin-top: 10px; margin-right: 20px;" type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> Lưu lại</button>
 			</div>
-			<br>
-			<button style="float: right; margin-top: 10px; margin-right: 20px;" type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> Lưu lại</button>
+			
 			
 			<!-- 
 			<div class="row">

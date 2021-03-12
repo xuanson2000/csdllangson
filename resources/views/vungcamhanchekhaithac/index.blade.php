@@ -19,34 +19,10 @@
 </style>
 <div class="container" style="background-color: white; padding: 20px 20px 20px 30px; width: 100%;">
   
-  <div class="row" style="margin-left: 1px; margin-right: 1px; margin-top:0px;background-color: #525C72;">
+  <div class="row" style="margin-left: 1px; margin-right: 1px; margin-top:0px;background-color: #525C72; ">
 
-	<form action="" method="get">
-
-		<div class="col-md-3 form-group" style="margin-left: -8px;  margin-top: 10px;">
-			<label style="font-weight: bold; float:left; color: #DDE1F8;">Từ khóa tìm kiếm</label>
-			<input type="text" class="form-control" id="usr" name="txtseach">
-		</div>
-
-		<div class="col-md-3 form-group" style="margin-left: -8px;  margin-top: 10px;">
-			<label style="font-weight: bold; float:left; color: #DDE1F8;">Quận/huyện</label>
-			<select class="form-control" name="tenQuanHuyenseach" id="idtenQuanHuyenseach"  >
-        <option value="">Chọn Quận/Huyện</option>
-       
-      </select>
-		</div>
-		<div class="col-md-3 form-group" style="margin-left: 10px; margin-top: 10px;">
-			<label style="font-weight: bold; float:left; color: #DDE1F8;">Xã/Phường </label>
-      <select class="form-control" name="tenXaPhuongseach" id="idtenXaPhuongseach" >
-
-      </select>
-		</div>
-		<button style="margin-top: 35px; margin-left:10px;" type="submit" class="btn btn-primary"><img src="public/anh/search-3-16.png"> Tìm kiếm</button>
-
-    <button type="button" style="float: right; margin-top: 35px; margin-right: 10px;" class="btn btn-warning" data-toggle="modal" data-target="#myModaldulieucamhanche"> <i class="fa fa-plus-square" aria-hidden="true"></i> Thêm dữ liệu</button>
-
-	</form>
-
+<div class="col-md-10"><h4 style="color: white;">DANH SÁCH DỮ LIỆU CẤM VÀ HẠN CHẾ KHAI THÁC</h4></div>
+<div class="col-md-2"><button type="button" style="float: right;margin-bottom: 5px; margin-top: 10px; margin-right: 10px;" class="btn btn-warning" data-toggle="modal" data-target="#myModaldulieucamhanche"> <i class="fa fa-plus-square" aria-hidden="true"></i> Thêm dữ liệu</button></div>
 	
 	  <div class="modal fade" id="myModaldulieucamhanche">
       <div class="modal-dialog"style="width: 60%;">
@@ -81,12 +57,7 @@
              			@endforeach
              		</select>
              	</div>
-             	<div class="form-group">
-             		<label style="font-weight: bold; float:left; ">Xã/Phường <span style="color: red;">(*)</span></label>
-             		<select class="form-control" name="id_xa" id="idtenXaPhuong" required >
-
-             		</select>
-             	</div>
+             
 
 
              <div class="form-group">
@@ -95,15 +66,15 @@
              </div>
 
              <div class="form-group">
-               <label for="usr">Diện tích cấm<span style="color: red;">(*)</span></label>
+               <label for="usr">Diện tích cấm (ha)<span style="color: red;">(*)</span></label>
                 
-                 <input type="double" class="form-control" name="dienTich" required="">
+                 <input type="number"  step=0.01 class="form-control" name="dienTich" required="">
               
              </div>
 
              <div class="form-group">
-             	<label for="usr">file giấy phép  </label>
-             	<input type="file" class="form-control" name="fileGiayPhep[]" multiple >
+             	<label for="usr">file quyết định cấm </label>
+             	<input type="file" class="form-control" name="fileGiayPhep[]" multiple  required="">
              </div>
 
             
@@ -140,10 +111,10 @@
   </div>
   @endif
 
-  @if(Session::has('messgthemtruluong'))
+  @if(Session::has('messgsua'))
   <div class="alert alert-info alert-dismissible" style="background-color:#C3D9E2;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Thành công</strong> {{Session::get('messgthemtruluong')}}
+    {{Session::get('messgsua')}}
   </div>
   @endif 
 
@@ -154,51 +125,10 @@
  {{Session::get('messgxoa')}}</div>
  @endif
 
-@if( isset($viewseach))
 
-  <h4 style="margin-bottom: 20px; margin-top: 20px;">KẾT QUẢ TÌM KIẾM</h4>
-             
-  <table class="table table-bordered">
-    <thead>
-    	<tr style="background-color: #AAC1C6;">
-    		<th>STT</th>
-        <th>KÝ HIỆU MỎ</th>
-    		<th>TÊN MỎ</th>
-    		<th>NHÓM KHOÁNG SẢN</th>
-        <th>LOẠI KHOÁNG SẢN</th>
-    		<th>VỊ TRÍ HÀNH CHÍNH</th>
-        <th>CHI TIẾT</th>
-    		<th>THAO TÁC</th>
-    	</tr>
-    </thead>
-    <tbody>
-      @foreach($viewseach as $viewseachs)
-      <tr>
-        <td>{{$loop->index+1}}</td>
-        <td>{{$viewseachs->kyHieuMo}}</td>
-        <td>{{$viewseachs->tenMo}}</td>
-        <td>{{$viewseachs->loaiHinhKhoangSan->nhomKhoangSan->tenNhomKS}}</td>
-        <td>{{$viewseachs->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
-        <td>{{$viewseachs->xaPhuong->tenXaPhuong}} - {{$viewseachs->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
-        
-
-        <td><a href="{{route('chitietdulieumo',[$viewseachs->id])}}" > XEM</a></td>
-        <td> 
-          <a title="Sửa" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
-          <a title="Chuyển đổi dữ liệu mỏ"   href="{{route('getxoadulieumo',[$viewseachs->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
-
-        </td>
-      </tr>
-      @endforeach  
-   
-      
-    </tbody>
-  </table>
-
-@else 
   <h4 style="margin-bottom: 20px; margin-top: 20px;">DANH SÁCH DỮ LIỆU CẤM VÀ HẠN CHẾ KHAI THÁC</h4>
 
-<table class="table table-bordered">
+<table id="idfff"  class="table table-bordered">
     <thead>
       <tr style="background-color: #AAC1C6;">
       	<th>STT</th>
@@ -215,7 +145,7 @@
       <tr>
         <td>{{$loop->index+1}}</td>
         <td>{{$controllerKsVungCamHanChe->tenKhuVuc}}</td>
-        <td>{{$controllerKsVungCamHanChe->xaPhuong->tenXaPhuong}}- {{$controllerKsVungCamHanChe->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn</td>
+        <td> {{$controllerKsVungCamHanChe->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn</td>
         <td>{{$controllerKsVungCamHanChe->dienTich}}</td>
         
         <td>{{$controllerKsVungCamHanChe->lyDoCam}}</td>
@@ -230,7 +160,7 @@
           </td>
 
         <td> 
-          <a title="Sửa" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
+          <a title="Sửa" href="{{route('suadulieucamhanchekhaithac',[$controllerKsVungCamHanChe->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
           <a title="xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"  href="{{route('xoadulieucamhanchekhaithac',[$controllerKsVungCamHanChe->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
 
         </td>
@@ -244,23 +174,45 @@
 
 
 
-@endif
+
 
 
 
 
 </div>
 
+<script>
 
+
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#idfff tfoot th').each( function () {
+      var title = $(this).text();
+      $(this).html( '<input type="text" placeholder="Tìm kiếm '+title+'" />' );
+    } );
+    
+    // DataTable
+    var table = $('#idfff').DataTable({
+      initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+              var that = this;
+              
+              $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                if ( that.search() !== this.value ) {
+                  that
+                  .search( this.value )
+                  .draw();
+                }
+              } );
+            } );
+          }
+        });
+    
+  } );
+
+</script>
 
   @endsection
 
-  @section('script')
-  <script>
-      $("#idtenQuanHuyen").change(function(){
-      var idtong =$(this).val();
-      $.get("khoang-san/ajax/xa-phuong/"+idtong,function(data){
-        $("#idtenXaPhuong").html(data);
-      });
-    });  </script>
-  @endsection
+  

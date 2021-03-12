@@ -108,4 +108,20 @@ public function suaquyphuchoimoitruongpost($id, Request $req){
 }
 
 
+public function xoaquyphuchoimoitruong($id,Request $req){
+
+		$tienkyquymoitruongdelete = tienkyquymoitruong::find($id);
+		// $lichsuxoadoanhnghiep= new lichSuTruyCap;
+		// $lichsuxoadoanhnghiep->tenBang='loại hình doanh nghiệp';
+		// $lichsuxoadoanhnghiep->id_user=auth::guard('quantri')->user()->id;
+		// $lichsuxoadoanhnghiep->ip_client=$req->ip();
+		// $lichsuxoadoanhnghiep->thaoTac ='xóa';
+		// $lichsuxoadoanhnghiep->tenBanGhi =$loaihinhdoanhnghiep->tenloaihinh;
+		// $lichsuxoadoanhnghiep->save();
+		$tienkyquymoitruongdelete->delete();
+
+		return redirect('khoang-san/tien-ky-quy-phuc-hoi-moi-truong')->with('messgxoa','xóa thành công');
+		
+	}
+
 }

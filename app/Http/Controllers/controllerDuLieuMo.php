@@ -97,14 +97,13 @@ $tiencapquyenkhaithac=tiencapquyenkhaithac::where('id_mo',$id)->get();
     	$duLieuMo->coQuanPheDuyet= $req ->coQuanPheDuyet;
       $duLieuMo->donVi= $req ->donVi;
     	$duLieuMo->hienTrang=1;
-        $duLieuMo->id_user=Auth::guard('quantri')->user()->id;
+      $duLieuMo->id_user=Auth::guard('quantri')->user()->id;
     	
     	$duLieuMo->save();
 
-
-    	$taodoxs = $req->toaDoX;
-        $taodoys = $req->toaDoY; 
-        if($taodoxs!=null && $taodoys!=null ){
+    	 $taodoxs = $req->toadox;
+       $taodoys = $req->toadoy; 
+      if($taodoxs!=null && $taodoys!=null ){
 
 
 
@@ -112,7 +111,7 @@ $tiencapquyenkhaithac=tiencapquyenkhaithac::where('id_mo',$id)->get();
       //  foreach($taodoxs as $key => $value) {
 
       //  	\DB::table('toaDo')->insert([
-   			// 	'id_loaiHoSo'=>'1',
+   			// 	'id_loaihoso'=>'1',
    			// 	'id_HoSo'=> $duLieuMo->id,
    			// 	'toaDoX' => $taodoxs[$key],
    			// 	'toaDoY' => $taodoys[$key]
@@ -124,10 +123,10 @@ $tiencapquyenkhaithac=tiencapquyenkhaithac::where('id_mo',$id)->get();
        foreach (array_combine($taodoxs, $taodoys) as $taodox => $taodoy) {
        	
        	\DB::table('toaDo')->insert([
-   				'id_loaiHoSo'=>'1',
+   				'id_loaihoso'=>'1',
    				'id_HoSo'=> $duLieuMo->id,
-   				'toaDoX' => $taodox,
-   				'toaDoY' => $taodoy
+   				'toadox' => $taodox,
+   				'toadoy' => $taodoy
    			]); 
 
        }
@@ -135,14 +134,14 @@ $tiencapquyenkhaithac=tiencapquyenkhaithac::where('id_mo',$id)->get();
 
    		// foreach ($taodoxs as $taodox && $taodoys as $taodoy) {
    		// 	\DB::table('toaDo')->insert([
-   		// 		'id_loaiHoSo'=>'1',
+   		// 		'id_loaihoso'=>'1',
    		// 		'id_HoSo'=> $duLieuMo->id,
    		// 		'toaDoX' => $taodox
    		// 	]); 
 
 
      //       	\DB::table('toaDo')->insert([
-   		// 		'id_loaiHoSo'=>'1',
+   		// 		'id_loaihoso'=>'1',
    		// 		'id_HoSo'=> $duLieuMo->id,
    		// 		'toaDoY' => $taodoy
    		// 	]);
@@ -197,11 +196,6 @@ public function getxoadulieumo($id){
 
          </script>";
      }
-
-
-       
-
-
     	}else if($req->phuongThuc == 0)
 
     	{   
@@ -281,7 +275,7 @@ public function getxoadulieumo($id){
    
 
     $dulieumoEdit= duLieuMo::find($id);
-    $toaDoEdits=DB::table('toaDo')->where('id_loaiHoSo',1)->where('id_HoSo',$id)->get();
+    $toaDoEdits=DB::table('toaDo')->where('id_loaihoso',1)->where('id_hoso',$id)->get();
 
     
     $quanHuyens=quanHuyen::get();
@@ -321,7 +315,7 @@ public function getxoadulieumo($id){
      $duLieuMoEdit->save();
 
 
-      $toaDoEdits=DB::table('toaDo')->where('id_loaiHoSo',1)->where('id_HoSo',$id)->get();
+      $toaDoEdits=DB::table('toaDo')->where('id_loaihoso',1)->where('id_hoso',$id)->get();
 
 // dd($toaDoEdits);
       foreach($toaDoEdits as $toaDoEdit){
@@ -332,8 +326,8 @@ public function getxoadulieumo($id){
 
 
         \DB::table('toaDo')->where('id',$toaDoEdit->id)->update([
-          'toaDoX' =>$req->$idX,
-          'toaDoY' =>$req->$idY
+          'toadox' =>$req->$idX,
+          'toadoy' =>$req->$idY
         ]); 
       }
 
@@ -342,7 +336,7 @@ public function getxoadulieumo($id){
     //  foreach (array_combine($taodoxs, $taodoys) as $taodox => $taodoy) {
 
       //   \DB::table('toaDo')->insert([
-      //     'id_loaiHoSo'=>'1',
+      //     'id_loaihoso'=>'1',
       //     'id_HoSo'=> $duLieuMo->id,
       //     'toaDoX' => $taodox,
       //     'toaDoY' => $taodoy

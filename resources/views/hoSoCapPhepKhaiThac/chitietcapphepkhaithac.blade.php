@@ -56,16 +56,6 @@
             </li>
             @endif
 
-            
-
-            @if($hoSoCapPhepKhaiThacid->index_biendong==1)
-            <li class="nav-item">
-              <a style="font-weight: bold;" class="nav-link" data-toggle="tab" href="#menu3">Thông tin giấy chuyển nhượng</a>
-            </li>
-            @endif
-
-
-
           </ul>
 
 
@@ -182,6 +172,12 @@
                   <td>{{$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
                 </tr>
 
+                 <tr>
+                  <td>Loại khoáng sản </td>
+                  <td>{{$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
+                </tr>
+
+
                 <tr>
                   <td>Vị trí hành chính</td>
                   <td>{{$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
@@ -191,21 +187,7 @@
                   <td>{{$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->coQuanCapPhep->tenCoQuan}}</td>
                 </tr>
                 
-                <tr>
-                  <td>Vị trí tọa độ khai thác</td>
-                  <td>
-                    <h5>Hệ tọa độ: VN200</h5>
-                   <?php
-                   $toaDos=DB::table('toaDo')->where('id_loaiHoSo','1')->where('id_HoSo',$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->id)->get();
-                   ?>
-                   @foreach($toaDos as $toaDo)
-                   Góc {{$loop->index+1}}: X :{{$toaDo->toaDoX}} - Y:{{$toaDo->toaDoY}}<br>
-                   @endforeach
-
-
-                 </td>
-
-               </tr>
+            
 
 
               </tbody>
@@ -249,12 +231,12 @@
                 
                 <tr>
                   <td>Thời gian cấp phép khai thác</td>
-                  <td>{{$hoSoCapPhepKhaiThacid->thoigiancapphepkhaithac}}</td>
+                  <td>{{$hoSoCapPhepKhaiThacid->thoigiancapphepkhaithac}} năm</td>
                 </tr>
 
                 <tr>
                   <td>diện tích cấp phép khai thác</td>
-                  <td>{{$hoSoCapPhepKhaiThacid->dienTichKhaiThac}}</td>
+                  <td>{{$hoSoCapPhepKhaiThacid->dienTichKhaiThac}} ha</td>
                 </tr>
                   
                 <tr>
@@ -271,6 +253,22 @@
                 	<td>Công suất khai thác</td>
                 	<td>{{$hoSoCapPhepKhaiThacid->congSuatKhaiThac}} {{$hoSoCapPhepKhaiThacid->donVi}}</td>
                 </tr>
+                <tr>
+                  <td>Vị trí tọa độ khai thác</td>
+                  <td>
+                   <?php
+                   $toaDos=DB::table('toaDo')->where('id_loaihoso','1')->where('id_hoso',$hoSoCapPhepKhaiThacid->id)->get();
+                   ?>
+                   @foreach($toaDos as $toaDo)
+                   Góc {{$loop->index+1}}: X :{{$toaDo->toadox}} - Y:{{$toaDo->toadoy}}<br>
+                   @endforeach
+
+
+                 </td>
+
+               </tr>
+
+
                 <tr>
                   <td>File scan giấy phép </td>
 

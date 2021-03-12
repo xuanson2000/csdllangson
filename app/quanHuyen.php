@@ -18,4 +18,8 @@ class quanHuyen extends Model
      public function duLieuMo(){
      	return $this->hasManey('App\duLieuMo','viTriHuyen','id');
      }
+     
+       public function KsVungCamHanChe(){
+     	return $this->hasManey('App\KsVungCamHanChe','id_huyen','id');
+     }
 }

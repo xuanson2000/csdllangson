@@ -93,7 +93,7 @@
 					</div>
 					<div class="form-group">
 						<label for="usr">Thời gian cấp phép khai thác (năm) <span style="color: red;">(*)</span> </label>
-						<input type="float" class="form-control" name="thoiGianCapPhepKhaiThac" required="">
+						<input type=number step=0.01 class="form-control" name="thoiGianCapPhepKhaiThac" required="">
 					</div>
 					
 				
@@ -108,13 +108,13 @@
 						<div class="form-group col-md-4">
 
 							<label for="usr">Trữ lượng địa chất <span style="color: red;">(*)</span>  </label>
-							<input type="text" class="form-control" name="truLuongDiaChat" required="">
+							<input type=number step=0.01 class="form-control" name="truLuongDiaChat" required="">
 
 						</div>
 						
 						<div class="form-group col-md-4">
 							<label for="usr">Trữ lượng khai thác <span style="color: red;">(*)</span> </label>
-							<input type="float" class="form-control" name="truLuongKhaiThac" required="">
+							<input type=number step=0.01 class="form-control" name="truLuongKhaiThac" required="">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="usr">Đơn vị  </label>
@@ -122,6 +122,7 @@
 								<option value="">Chọn đơn vị</option>
 								<option value="m3">m3</option>
 								<option value="tấn">tấn</option>
+								<option value="Kg">Kg</option>
 
 							</select>
 							<script>
@@ -160,6 +161,35 @@
 							<input type="file" class="form-control" name="fileBanDo[]" multiple>
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-6"><label for="usr">Tọa độ khai thác </label></div>
+							<div class="col-md-6"><button id="a" type="button" class="btn btn-primary">Thêm tọa 
+							độ góc mỏ</button>
+						</div> 
+					</div>
+					<div class="row" style="margin-top: 20px;">
+						<p id="toadox" class="col-md-6" style="margin-top: 20px;"> </p>
+						<p id="toadoy" class="col-md-6" style="margin-top: 20px;"> </p>
+					</div>
+						<script>
+							$(document).ready(function(){
+								$("#a").click(function(){
+									$("#toadox").append(' Tọa độ X:<input type="text"  name="toadox[]"><br>');
+								});
+							});
+
+							$(document).ready(function(){
+								$("#a").click(function(){
+									$("#toadoy").append(' Tọa độ Y:<input type="text"  name="toadoy[]"><br>');
+								});
+							});
+						</script>
+
+
+					</div>
+
 					
 				</div>
 

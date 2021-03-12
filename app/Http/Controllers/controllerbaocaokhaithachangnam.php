@@ -88,11 +88,7 @@ class controllerbaocaokhaithachangnam extends Controller
 			$nopNganSachKhoangSan->file=$Hinh;
 
 		}
-		else{
-
-			$nopNganSachKhoangSan->anh="error.png";
-
-		}
+		
 
 		$nopNganSachKhoangSan ->save();
 
@@ -108,9 +104,6 @@ class controllerbaocaokhaithachangnam extends Controller
 		return redirect('khoang-san/bao-cao-ket-qua-khai-thac-khoang-san-hang-nam')->with('messgthem','Thêm thành công');
 
 		unset($nopNganSachKhoangSan);
-	
-
-
 
 
 }

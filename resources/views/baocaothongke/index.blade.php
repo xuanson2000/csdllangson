@@ -9,19 +9,30 @@
   <div class="col-md-4" style="margin-top: 40px;">
       <div class="col-md-12">
       <a href="{{route('baocaotheohoso')}}">
-        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-area-chart" aria-hidden="true"></i> THEO LOẠI HỒ SƠ</h5></center>  </div>
+        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-area-chart" aria-hidden="true"></i>BC THEO LOẠI HỒ SƠ</h5></center>  </div>
       </a>
     </div>
 
-      <div class="col-md-12" style="margin-top: 50px;">
+      <div class="col-md-12" style="margin-top: 10px;">
       <a href="{{route('baocaonamkhaithac')}}">
-        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-bar-chart" aria-hidden="true"></i> THEO THỜI HẠN KHAI THÁC</h5></center>  </div>
+        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-bar-chart" aria-hidden="true"></i> BC THEO THỜI HẠN KHAI THÁC</h5></center>  </div>
       </a>
     </div>
 
-      <div class="col-md-12" style="margin-top: 50px;">
-      <a href="{{route('test')}}">
-        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-line-chart" aria-hidden="true"></i> THEO LOẠI HỒ SƠ</h5></center>  </div>
+      <div class="col-md-12" style="margin-top: 10px;">
+      <a href="{{route('baocaohosodangkhaothac')}}">
+        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-line-chart" aria-hidden="true"></i> BC HỒ SƠ ĐANG KHAI THÁC</h5></center>  </div>
+      </a>
+    </div>
+
+      <div class="col-md-12" style="margin-top: 10px;">
+      <a href="{{route('baocaohosothuhoi')}}">
+        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-line-chart" aria-hidden="true"></i> BC HỒ SƠ KHAI THÁC THU HỒI</h5></center>  </div>
+      </a>
+    </div>
+     <div class="col-md-12" style="margin-top: 10px;">
+      <a href="{{route('baocaotinhinhkhaithac')}}">
+        <div class="boxshow" style="width: 80%; height: 50px; border: 2px solid #2861F0; "><center><h5 style=" line-height: 1.5; color:#2861F0;"> <i class="fa fa-line-chart" aria-hidden="true"></i> BC THEO TÌNH HÌNH KHAI THÁC KS</h5></center>  </div>
       </a>
     </div>
 

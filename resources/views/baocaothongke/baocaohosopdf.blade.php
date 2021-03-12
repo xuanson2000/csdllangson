@@ -116,23 +116,23 @@
     	@foreach($txtthongkehosos as $txtthongkehoso)
     	<tr>
     		<td>{{$loop->index+1}}</td>
-        @if($txtthongkehoso->index_biendong==1)
-        <?php
-        $hoSoBienDongKhoangSan=App\hoSoBienDongKhoangSan::where('id_hoSoCapPhepKhaiThac',$txtthongkehoso->id)->first();
-        ?>
-    		<td>{{$hoSoBienDongKhoangSan->soGiayPhep}}</td>
-        @else
+       
           <td>{{$txtthongkehoso->soGiayPhepKhaiThac}}</td>
 
-        @endif
+        
 
 
     		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
 
-        @if($txtthongkehoso ->index_biendong==1)
-        <td>{{$hoSoBienDongKhoangSan->doanhNghiepChuyenNhuong->tenDoanhNghiep}}</td>
+         
+        @if($txtthongkehoso->note==2)
+        <?php
+        $iddn=App\doanhNghiepChuyenNhuong::where('id_doanhnghiep',$hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->id)->first();
+
+        ?>
+        <td>{{$iddn->tenDoanhNghiep}}</td>
         @else
-         <td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
+        <td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
         @endif
 
     		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>

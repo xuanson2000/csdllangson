@@ -12,8 +12,8 @@ class KsVungCamHanChe extends Model
 	public $timestamps = false;
 
 
-      public function xaPhuong(){
-     	return $this->belongsTo('App\xaPhuong','id_xa','id');
+      public function quanHuyen(){
+     	return $this->belongsTo('App\quanHuyen','id_huyen','id');
      }
 
 }

@@ -46,7 +46,7 @@ $(document).ready(function(){
 				<option value="Five">Điều chỉnh khai thác</option>
 				<option value="Two">Gia hạn hồ sơ</option>
 				<!-- <option value="Three">Trả lại Mỏ</option> -->
-				<option value="For">Thu hồi mỏ</option>
+				<option value="For">Thu hồi khai thác</option>
 
 			</select>
 		</div>
@@ -432,38 +432,41 @@ $(document).ready(function(){
 </form>
 </div>
  -->
+
+
 <div style="margin-top: 40px;" id="showFor" class="myDiv">
 	<form action="{{route('chuyendoikhaithacthuhoi',[$idhosokhaithac])}}" method="POST" enctype="multipart/form-data">
-
-
-		<input type="hidden"  name="_token" value="{{csrf_token()}}" >
+     <input type="hidden"  name="_token" value="{{csrf_token()}}" >
 
 
 	<div class="row"style=" margin-top: 10px;">
-		<label class="control-label col-sm-3" for="email">Số quyết định thu hồi mỏ</label>
+		<label class="control-label col-sm-3" for="email">Số Quyết định thu hồi</label>
 		<div class="col-sm-8">
 			<input type="text" class="form-control" id="email" placeholder="Nhập Số quyết định thu hồi Mỏ tại đây" name="soquyetdinh">
 		</div>
 	</div>
+
+
+	<div class="row"style=" margin-top: 10px;">
+		<label class="control-label col-sm-3" for="email">Tên giấy phép thu hồi</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="email" name="tengiayphep">
+		</div>
+	</div>
+
 	<div class="row" style=" margin-top: 10px;">
 		<label class="control-label col-sm-3" for="email">Ngày quyết định</label>
 		<div class="col-sm-8">
-			<input type="date" class="form-control" id="email" placeholder="Nhập Ngày bắt đầu thu hồi tại đây" name="ngayquyetdinh">
+			<input type="date" class="form-control" id="email" placeholder="Nhập Ngày bắt đầu thu hồi tại đây" name="ngaygiayphepthuhoi">
 		</div>
 	</div>
-	
 
 	<div class="row" style=" margin-top: 10px;">
 		<label class="control-label col-sm-3" for="email">Lý do thu hồi</label>
 		<div class="col-sm-8">
-			
-		  <textarea class="form-control" rows="5" name="lydo"></textarea>
+			<input type="date" class="form-control" id="email" placeholder="Nhập Ngày bắt đầu thu hồi tại đây" name="lydo">
 		</div>
 	</div>
-
-
-
-
 
 
 	<div class="row" style=" margin-top: 10px;">

@@ -149,26 +149,12 @@
         	{{$dulieumoEdit->dacdiemKhoang}}
         </textarea>
       </div>
+
+      
       
 
     </div>
-    
-    <div class="col-md-4">
-      <p style="color: red; font-weight: bold; font-size: 16px; border-bottom: 2px solid blue; margin-bottom: 20px;"> Tọa độ mỏ</p>
-        
-          @foreach($toaDoEdits as $toaDoEdit)
 
-          <div class="row" style="margin-top: 10px;">
-          	<p  class="col-md-6">Tọa độ X:
-         <input type="text"  name="{{$toaDoEdit->id}}X" value="{{$toaDoEdit->toaDoX}}"><br>  </p>
-          	<p class="col-md-6"> Tọa độ Y:
-         <input type="text"  name="{{$toaDoEdit->id}}Y" value="{{$toaDoEdit->toaDoY}}"><br>  </p>
-          </div>
-         
-          @endforeach
-
-
-    </div>
 
   </div>
 

@@ -198,8 +198,8 @@
         <td><a href="public/tailieu/{{$hopdongthuedat->file}}"> {{$hopdongthuedat->file}}</a> </td>
       	<td>
        
-          <a title="Sửa" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
-          / <a title="xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"  href=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
+          <a title="Sửa" href="{{route('suahopdongthuedat',[$hopdongthuedat->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
+          / <a title="xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"  href="{{route('xoahopdongthuedat',[$hopdongthuedat->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
         </td>
 
       </tr>

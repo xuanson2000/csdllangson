@@ -67,6 +67,13 @@
                   <td>{{$chitietdulieumos->tenMo}}</td>
 
                 </tr>
+
+                 <tr>
+                  <td>Loại khoáng sản</td>
+                  <td>{{$chitietdulieumos->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
+
+                </tr>
+
                 <tr>
                   <td>Vị trí hành chính</td>
                   <td>{{$chitietdulieumos->xaPhuong->tenXaPhuong}} - {{$chitietdulieumos->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn</td>
@@ -98,20 +105,7 @@
                 <td>{{$chitietdulieumos->coQuanCapPhep->tenCoQuan}}</td>
               </tr>
 
-                 <tr>
-                  <td>Vị trí tọa độ</td>
-                  <td>
-                   <?php
-                   $toaDos=DB::table('toaDo')->where('id_loaiHoSo','1')->where('id_HoSo',$chitietdulieumos->id)->get();
-                   ?>
-                     @foreach($toaDos as $toaDo)
-                     Góc {{$loop->index+1}}: X :{{$toaDo->toaDoX}} - Y:{{$toaDo->toaDoY}}<br>
-                     @endforeach
-                    
-
-                 </td>
-
-               </tr>
+          
             </tbody>
           </table>
 

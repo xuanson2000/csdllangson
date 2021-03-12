@@ -36,35 +36,11 @@ class controllertiencapquyen extends Controller
 		$tiencapquyenkhaithac ->sotiennoplandau =$req ->sotiennoplandau;
 		$tiencapquyenkhaithac ->solannop =$req ->solannop;
 
-
-		// if($req->hasFile('image')){
-
-		// 	$file =$req->file('image');
-
-		// 	$name =$file ->getclientoriginalname();
-		// 	$Hinh =str_random(4)."_".$name;
-
-
-		// 	while(file_exists("public/tailieu/".$Hinh))
-		// 	{
-
-		// 		$Hinh =str_random(4)."_".$name;
-		// 	}
-		// 	$file->move("public/tailieu/",$Hinh);
-
-		// 	$hoDongThueDat->file=$Hinh;
-
-		// }
-		
-
 		$tiencapquyenkhaithac ->save();
 
 		return redirect()->back()->with('messgthem','Thêm thành công');
 
 		unset($tiencapquyenkhaithac);
-	
-
-
 
 
 }
@@ -106,5 +82,21 @@ $hoSoCapPhepKhaiThacedit->id_mo = $hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTru
 
     }
 
+
+public function xoatiencapquyenkhaithac($id,Request $req){
+
+		$tiencapquyenkhaithacedit = tiencapquyenkhaithac::find($id);
+		// $lichsuxoadoanhnghiep= new lichSuTruyCap;
+		// $lichsuxoadoanhnghiep->tenBang='loại hình doanh nghiệp';
+		// $lichsuxoadoanhnghiep->id_user=auth::guard('quantri')->user()->id;
+		// $lichsuxoadoanhnghiep->ip_client=$req->ip();
+		// $lichsuxoadoanhnghiep->thaoTac ='xóa';
+		// $lichsuxoadoanhnghiep->tenBanGhi =$loaihinhdoanhnghiep->tenloaihinh;
+		// $lichsuxoadoanhnghiep->save();
+		$tiencapquyenkhaithacedit->delete();
+
+		return redirect('khoang-san/tien-cap-quyen-khai-thac')->with('messgxoa','xóa thành công');
+		
+	}
 
 }

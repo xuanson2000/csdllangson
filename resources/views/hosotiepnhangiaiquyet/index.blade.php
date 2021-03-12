@@ -180,6 +180,7 @@
       	<th>NGÀY HẸN TRẢ</th>      	
       	<th>TỔ CHỨC, CÁ NHÂN TRÌNH</th>
       	<th>NGƯỜI TIẾP NHẬN</th>
+          <th>Phòng ban</th>
       	<th>FILE TRÌNH</th>
         <th>THAO TÁC</th>
       </tr>
@@ -192,12 +193,16 @@
         <td>{{$hosotiepnhangq->ngayTiepNhan}}</td>
         <td>{{$hosotiepnhangq->ngayHenTra}}</td>
         <td>{{$hosotiepnhangq->donViTrinh}}</td>
-        <td>{{$hosotiepnhangq->canBoTiepNhan}}</td>
+        <?php
+        $tennguoi=App\quantri::find($hosotiepnhangq->canBoTiepNhan);
+        ?>
+        <td>{{$tennguoi->namclass}}</td>
+        <td>{{$tennguoi->phongban->tenPhongBan}}</td>
         <td> <a href="public/tailieu/{{$hosotiepnhangq->file}}">  {{$hosotiepnhangq->file}}</a> </td>
 
        
         <td> 
-          <a title="Sửa" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
+          <a title="Sửa" href="{{route('suahosotiepnhan',[$hosotiepnhangq->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
           <a title="xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"  href="{{route('xoahosotiepnhan',[$hosotiepnhangq->id])}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
 
         </td>

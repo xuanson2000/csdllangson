@@ -51,22 +51,22 @@ class controllerCapnhathethong extends Controller
 
 
 
-    public function xoaloaihinhdoanhnghiep($id){
+    public function xoaloaihinhdoanhnghiep($id,Request $req){
 
         $loaihinhdoanhnghiep = loaihinhdoanhnghiep::find($id);
     
-  
-        
-        $lichsuxoadoanhnghiep= new lichsutruycap;
-        $lichsuxoadoanhnghiep->tenbang='loại hình doanh nghiệp';
+      
+
+        $lichsuxoadoanhnghiep= new lichSuTruyCap;
+        $lichsuxoadoanhnghiep->tenBang='loại hình doanh nghiệp';
         $lichsuxoadoanhnghiep->id_user=auth::guard('quantri')->user()->id;
-        $lichsuxoadoanhnghiep->ip_client=\request::ip();
-        $lichsuxoadoanhnghiep->thaotac ='xóa';
-        $lichsuxoadoanhnghiep->tenbanghi =$loaihinhdoanhnghiep->tenloaihinh;
+       $lichsuxoadoanhnghiep->ip_client=$req->ip();
+        $lichsuxoadoanhnghiep->thaoTac ='xóa';
+        $lichsuxoadoanhnghiep->tenBanGhi =$loaihinhdoanhnghiep->tenloaihinh;
 
-        $loaihinhdoanhnghiep->delete();
+        
         $lichsuxoadoanhnghiep->save();
-
+      $loaihinhdoanhnghiep->delete();
 
         return redirect('khoang-san/loai-hinh-doanh-nghiep')->with('messgxoa','xóa thành công');
         unset($loaihinhdoanhnghiep);

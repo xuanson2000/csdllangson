@@ -14,6 +14,9 @@ use App\sanpham;
 use App\hoSoCapPhepthamdo;
 use App\hoSoCapPhepKhaiThac;
 use App\duLieuDieuTraDanhGiaKhoangSan;
+use App\doanhNghiepChuyenNhuong;
+use App\hosothuhoitralaimo;
+use App\loaiKhoangSan;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -168,9 +171,13 @@ if($loaihoso==1)
 			$txtthongkehosos=hoSoCapPhepKhaiThac::whereYear('ngaygiayphep',$nam)->get();
 		}
 
+		// $pdfTCC = new \mPDF('utf-8', 'A4-L');
+
+
 		$pdfTCC = PDF::loadView('baocaothongke.baocaohosopdf',['txtthongkehosos'=>$txtthongkehosos,'loaihoso'=>$loaihoso,'nam'=>$nam]);
 
 		return $pdfTCC->stream('tuts_notes.pdf');
+
 // ----------
 
 	}
@@ -246,6 +253,186 @@ public function kqbaocaonamkhaithacexcel($sonamconlai){
 
 		return $pdfTCC->stream('tuts_notes.pdf');
 
+	}
+
+	public function baocaohosodangkhaothac(){
+
+	 $reportHoSoDangKhaithac=hoSoCapPhepKhaiThac::where('thuhoitralai','=',null)->orderBy('id','DESC')->paginate(10);
+
+		return view('baocaothongke.baocaohosodangkhaothac',['reportHoSoDangKhaithac'=>$reportHoSoDangKhaithac]);
 
 	}
+	
+	public function baocaohosodangkhaothacexcel(){
+
+     $reportHoSoDangKhaithacex=hoSoCapPhepKhaiThac::where('thuhoitralai','=',null)->orderBy('id','DESC')->get();
+	$customer_array[] = array('STT','Số GPTD','Tên Mỏ', 'Tên doanh nghiệp', 'VT Hành chính mỏ','Năm bắt đầu khai thác', 'Thời gian khai thác');
+
+		$stt=1;
+		foreach($reportHoSoDangKhaithacex as $customer)
+		{
+            $tendanhnghiep='';
+            if($customer->note==2)
+            	{
+
+            		$iddn=doanhNghiepChuyenNhuong::where('id_doanhnghiep',$customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->id)->first();
+            		$tendanhnghiep=$iddn->tenDoanhNghiep;
+            	}else{
+            		$tendanhnghiep=$customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep;
+
+            	}
+
+
+			$customer_array[] = array(
+
+				'STT'=>$stt++,
+				'Số GPCPKT' => $customer->soGiayPhepKhaiThac,
+				'Tên Mỏ' => $customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo, 
+				'Tên doanh nghiệp' => $tendanhnghiep,
+				'VT Hành chính mỏ' => $customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong." - ".$customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen." - "."Tỉnh Lạng Sơn",
+				'Năm bắt đầu khai thác' => $customer->ngaygiayphep,
+
+				'Thời gian khai thác' => $customer->thoigiancapphepkhaithac." "."năm",
+				
+			);
+		}
+
+			Excel::create('datadownload', function($excel) use ($customer_array){
+			$excel->setTitle('datadownload');
+			$excel->sheet('datadownload', function($sheet) use ($customer_array){
+				$sheet->fromArray($customer_array, null, 'A1', false, false);
+			});
+		})->download('xlsx');
+ 
+
+	}
+
+
+	public function baocaohosodangkhaothacpdf(){
+		
+		$reportHoSoDangKhaithacpdf=hoSoCapPhepKhaiThac::where('thuhoitralai','=',null)->orderBy('id','DESC')->get();
+
+		$pdfTCC = PDF::loadView('baocaothongke.baocaohosodangkhaothacpdf',['reportHoSoDangKhaithacpdf'=>$reportHoSoDangKhaithacpdf]);
+
+		return $pdfTCC->stream('tuts_notes.pdf');
+
+	}
+
+	
+
+	public function baocaohosothuhoi(){
+		$reportHoSoThuHoi=hoSoCapPhepKhaiThac::where('thuhoitralai','=',1)->orderBy('id','DESC')->get();
+		return view('baocaothongke.baocaohosothuhoi',['reportHoSoThuHoi'=>$reportHoSoThuHoi]);
+
+	}
+
+	
+	public function baocaohosothuhoiex(){
+
+	 $reportHoSoThuHoiex=hoSoCapPhepKhaiThac::where('thuhoitralai','=',1)->orderBy('id','DESC')->get();
+		
+	
+	$customer_array[] = array('STT','Số GPTD','Tên Mỏ', 'Tên doanh nghiệp','Năm bắt đầu khai thác', 'Thời gian khai thác','lý do thu hồi');
+
+		$stt=1;
+		foreach($reportHoSoThuHoiex as $customer)
+		{
+            $lydo='';
+            $hosothuhoitralai=hosothuhoitralaimo::where('id_khaithac',$customer->id)->first();
+            $lydo=$hosothuhoitralai->lydo;
+            
+            $tendanhnghiep='';
+            if($customer->note==2)
+            {
+
+            	$iddn=doanhNghiepChuyenNhuong::where('id_doanhnghiep',$customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->id)->first();
+            	$tendanhnghiep=$iddn->tenDoanhNghiep;
+            }else{
+            	$tendanhnghiep=$customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep;
+
+            }
+			$customer_array[] = array(
+
+				'STT'=>$stt++,
+				'Số GPCPKT' => $customer->soGiayPhepKhaiThac,
+				'Tên Mỏ' => $customer->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo, 
+				'Tên doanh nghiệp' => $tendanhnghiep,
+				
+				'Năm bắt đầu khai thác' => $customer->ngaygiayphep,
+
+				'Thời gian khai thác' => $customer->thoigiancapphepkhaithac." "."năm",
+				'lý do thu hồi' => $lydo,
+				
+			);
+		}
+
+			Excel::create('datadownload', function($excel) use ($customer_array){
+			$excel->setTitle('datadownload');
+			$excel->sheet('datadownload', function($sheet) use ($customer_array){
+				$sheet->fromArray($customer_array, null, 'A1', false, false);
+			});
+		})->download('xlsx');
+
+
+	}
+
+	
+	public function baocaotinhinhkhaithac(){
+		$quanHuyens=quanHuyen::get();
+		$nhomKhoangSans=nhomKhoangSan::get();
+
+	 $reporttinhinhkhaithacs=hoSoCapPhepKhaiThac::where('thuhoitralai','=',null)->orderBy('id','DESC')->get();
+
+		return view('baocaothongke.baocaotinhinhkhaithac',['reporttinhinhkhaithacs'=>$reporttinhinhkhaithacs,'quanHuyens'=>$quanHuyens,'nhomKhoangSans'=>$nhomKhoangSans]);
+
+	}
+
+
+	public function baocaotinhinhkhaithacpost(Request $req){
+		$namnow= Carbon::now()->year;
+		$namnow=$namnow-1;
+		$quanHuyens=quanHuyen::get();
+		$nhomKhoangSans=nhomKhoangSan::get();
+		$loaihoso=$req->loaihoso;
+		$tenkhoangsan=$req->loaiKhoangSan;
+		$KSName=loaiHinhKhoangSan::find($tenkhoangsan);
+		$quanhuyen=$req->tenQuanHuyen;
+		$qhname=quanHuyen::find($quanhuyen);
+		$baocaotinhhinhkt='';
+		if($loaihoso==1)
+		{
+           if($quanhuyen==0){
+
+              $baocaotinhhinhkt=hoSoCapPhepthamdo::join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('loaiKhoangSan',$tenkhoangsan)->select('hoSoCapPhepthamdo.*')->get();
+
+            }else{
+
+            	 $baocaotinhhinhkt=hoSoCapPhepthamdo::join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->join('xaPhuong', 'duLieuMo.viTriXa', '=','xaPhuong.id')->where('id_quanHuyen',$quanhuyen)->where('loaiKhoangSan',$tenkhoangsan)->select('hoSoCapPhepKhaiThac.*')->get();
+
+            }
+
+
+		}else if($loaihoso==3)
+		{
+            if($quanhuyen==0){
+
+              $baocaotinhhinhkt=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('loaiKhoangSan',$tenkhoangsan)->where('thuhoitralai','=',null)->select('hoSoCapPhepKhaiThac.*')->get();
+
+            }else{
+
+            	 $baocaotinhhinhkt=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->join('xaPhuong', 'duLieuMo.viTriXa', '=','xaPhuong.id')->where('id_quanHuyen',$quanhuyen)->where('loaiKhoangSan',$tenkhoangsan)->where('thuhoitralai','=',null)->select('hoSoCapPhepKhaiThac.*')->get();
+
+            }
+
+		}
+
+		//dd($baocaotinhhinhkt);
+
+
+		return view('baocaothongke.baocaotinhinhkhaithac',['baocaotinhhinhkt'=>$baocaotinhhinhkt,'quanHuyens'=>$quanHuyens,'nhomKhoangSans'=>$nhomKhoangSans,'loaihoso'=>$loaihoso,'KSName'=>$KSName,'quanhuyen'=>$quanhuyen,'qhname'=>$qhname,'namnow'=>$namnow]);
+
+	}
+	
+
+
 }
