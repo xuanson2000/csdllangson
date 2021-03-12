@@ -61,15 +61,16 @@
                 @endforeach
               </select>
 		</div>
-		@if(isset($baocaotinhhinhkt) && $baocaotinhhinhkt!=null)
+		@if(isset($baocaotinhhinhkt)&& $baocaotinhhinhkt!='')
 		<div class=" btn-group" style="margin-top: 10px; margin: 10px 40px 5px 5px; float: right;" >
 			<button type="button" class="btn btn-warning"><i class="fa fa-cloud-download" aria-hidden="true"></i> Xuất file</button>
 			<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
 				<span style="height: 17px;" class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href=""> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất file Excel</a></li>
-				<li><a href=""> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Xuất file PDF</a></li>
+				<!-- <li><a href=""> <i class="fa fa-file-excel-o" aria-hidden="true"></i> {{$loaihoso}}</a></li> -->
+				<li><a href="{{route('baocaotinhinhkhaithacpdf',[$loaihoso,$quanhuyen,$tenkhoangsan])}}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Xuất file PDF</a></li>
+
 			</ul>
 		</div>
 

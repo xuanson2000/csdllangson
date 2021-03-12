@@ -1134,6 +1134,12 @@ Route::get('/bao-cao-tinh-hinh-khai-thac-post',[
 ]);
 
 
+Route::get('/bao-cao-tinh-hinh-khai-thac-pdf/{loahoso}/{quanhuyen}/{khoangsan}',[
+  'as'=>'baocaotinhinhkhaithacpdf',
+  'uses'=>'controllerBaocaothongke@baocaotinhinhkhaithacpdf',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
+
 
 
 
