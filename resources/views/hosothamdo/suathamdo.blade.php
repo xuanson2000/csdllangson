@@ -100,14 +100,14 @@
 
 				</div>
 				<div class="col-md-6" >
-					<h4 style="padding: 7px 7px 7px 7px; background-color: #8F8A9A;color: white;">Thông tin giấy phép</h4>
+					<h4 style="padding: 7px 7px 7px 7px; background-color: #8F8A9A;color: white;">Thông tin giấy phép thăm dò</h4>
 					<div class="row"> 
 						<div class="form-group col-md-6">
 							<label for="usr">Số giấy phép<span style="color: red;">(*)</span> </label>
 							<input type="text" class="form-control" name="soGiayPhepThamDo" value="{{$hoSoCapPhepthamdoBD->soGiayPhepThamDo}}"required="">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="usr">Ngày giấy phép<span style="color: red;">(*)</span> </label>
+							<label for="usr">Ngày cấp phép<span style="color: red;">(*)</span> </label>
 							<input type="date" class="form-control" name="ngayGiayPhep" value="{{$hoSoCapPhepthamdoBD->ngayGiayPhep}}" required="">
 						</div>
 					</div>

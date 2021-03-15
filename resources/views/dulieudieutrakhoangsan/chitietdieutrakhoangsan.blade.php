@@ -72,7 +72,13 @@
         <td>Diện tích thực hiện </td>
         <td>{{$duLieuDieuTraDanhGiaKhoangSanid->dienTichThucHien}} ha</td>
       </tr>
+     
+
       <tr>
+        <td>Ghi chú </td>
+        <td>{{$duLieuDieuTraDanhGiaKhoangSanid->ghiChu}}</td>
+      </tr>
+       <tr>
         <td>File đính kèm </td>
 
         <td>
@@ -80,11 +86,6 @@
           <a href="public/tailieu/{{$filedinhkemgiayphep->tenFile}}"> {{$filedinhkemgiayphep->tenFile}}   <i class="fa fa-download" aria-hidden="true"></i> &nbsp</a>
           @endforeach
         </td>
-      </tr>
-
-      <tr>
-        <td>Ghi chú </td>
-        <td>{{$duLieuDieuTraDanhGiaKhoangSanid->ghiChu}}</td>
       </tr>
     </tbody>
   </table>

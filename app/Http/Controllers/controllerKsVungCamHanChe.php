@@ -32,6 +32,7 @@ class controllerKsVungCamHanChe extends Controller
 	$KsVungCamHanChe->dienTich= $req ->dienTich;
 	$KsVungCamHanChe->save();
 
+    if($req->hasFile('fileGiayPhep')){
 	$fileDinhKemGiayPheps = $req->file('fileGiayPhep');
 	foreach ($fileDinhKemGiayPheps as $fileDinhKemGiayPhep) {
 		$tenAnh = $fileDinhKemGiayPhep->getClientOriginalName();
@@ -48,6 +49,7 @@ class controllerKsVungCamHanChe extends Controller
 			'tenFile'=> $tenAnhmoi
 		]); 
 	}
+}
 
 	return redirect('khoang-san/du-lieu-vung-cam-han-che-khai-thac')->with('messgthem','Thêm thành công');
 

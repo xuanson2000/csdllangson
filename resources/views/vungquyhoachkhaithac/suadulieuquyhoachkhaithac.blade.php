@@ -53,7 +53,7 @@
 
 
              <div class="form-group">
-              <label for="usr">file giấy phép  </label>: 
+              <label for="usr">file đính kèm  </label>: 
               <a href="public/tailieu/{{$quyHoachKhaiThacid->file}}">   {{$quyHoachKhaiThacid->file}}</a>
               <input type="file" class="form-control" name="file" multiple >
              </div>

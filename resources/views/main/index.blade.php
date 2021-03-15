@@ -32,10 +32,10 @@
             <figure class="snip1482">
               <figcaption>
                <ul>
-                <li> <a class="abc" href="">Dữ liệu điều tra khoáng sản </a> </li>
+                <li> <a class="abc" href="{{route('dulieudieutradanhgiakhoangsan')}}">Dữ liệu điều tra khoáng sản </a> </li>
                 <li><a class="abc" href="{{route('dlmo')}}">Dữ liệu mỏ khoáng sản </a></li>
-                <li><a class="abc" href="">DL vùng cấm và hạn chế khai thác</a></li>
-                <li><a class="abc" href="">DL vùng quy hoạch khai thác </a></li>
+                <li><a class="abc" href="{{route('dulieucamhanchekhaithac')}}">DL vùng cấm và hạn chế khai thác</a></li>
+                <li><a class="abc" href="{{route('dulieuvungquyhoachkhaithac')}}">DL vùng quy hoạch khai thác </a></li>
                 
               </ul>
               </figcaption>
@@ -46,10 +46,10 @@
             <figure class="snip1482">
               <figcaption>
                 <ul>
-                <li> <a class="abc" href="{{route('thamdokhoangsan')}}">Hồ sơ thăm dò khoáng sản </a> </li>
-                <li><a class="abc" href="">Hồ sơ phê duyệt trữ lượng</a></li>
-                <li><a class="abc" href="{{route('pheduyettruluong')}}">Hồ sơ cấp  phép khai thác</a></li>
-               
+                <li> <a class="abc" href="{{route('thamdokhoangsan')}}">Thăm dò khoáng sản </a> </li>
+                <li><a class="abc" href="{{route('truluongkhoangsan')}}">Phê duyệt trữ lượng</a></li>
+                <li><a class="abc" href="{{route('capphepkhaithac')}}">Cấp  phép khai thác</a></li>
+                 <li><a class="abc" href="{{route('biendongkhoangsan')}}">Thu hồi khai thác</a></li>
                 
               </ul>
               </figcaption>
@@ -62,10 +62,10 @@
             <figure class="snip1482">
               <figcaption>
                 <ul>
-                <li> <a class="abc" href="{{route('hosogiaiquyet')}}">Hồ sơ tiếp nhận giải quyết</a> </li>
-                <li><a class="abc" href="{{route('thuedat')}}">Hợp đồng thuê đất</a></li>
-                <li><a class="abc" href="">Quỹ phục hồi môi trường</a></li>
-                 <li><a class="abc" href="{{route('vanbanphapquy')}}">Văn bản chỉ đạo</a></li>
+                <li> <a class="abc" href="{{route('hosotiepnhangiaiquyet')}}">Hồ sơ tiếp nhận giải quyết</a> </li>
+                <li><a class="abc" href="{{route('hopdongthuedat')}}">Hợp đồng thuê đất</a></li>
+                <li><a class="abc" href="{{route('tiencapquyenkhaithac')}}">Tiền cấp quyền khai thác</a></li>
+                 <li><a class="abc" href="{{route('phuchoimoitruong')}}">Phí cải tạo môi trường</a></li>
               </ul>
               </figcaption>
               <a href="#"></a><img src="public/admin2/dist/img/file-manager11.jpg" alt="sample45" />

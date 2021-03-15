@@ -330,6 +330,7 @@ $nhomKhoangSanedit=nhomKhoangSan::find($id);
     	$loaihinhkhoangsan = new loaiHinhKhoangSan;
 
     	$loaihinhkhoangsan->tenLoaiHinhKS= $req->tenLoaiHinhKS;
+                $loaihinhkhoangsan->kyhieu= $req->kyhieu;
     	$loaihinhkhoangsan->id_nhomKhoangSan= $req ->idNhomKhoangSan;
 
     	$loaihinhkhoangsan->id_user=Auth::guard('quantri')->user()->id;
@@ -370,7 +371,7 @@ public function sualoaihinhkhoangsanpost($id, Request $req){
 
    $loaiHinhKhoangSanedit=loaiHinhKhoangSan::find($id);
    $loaiHinhKhoangSanedit->tenLoaiHinhKS= $req ->tenLoaiHinhKS;
-
+   $loaiHinhKhoangSanedit->kyhieu= $req ->kyhieu;
    $loaiHinhKhoangSanedit->id_nhomKhoangSan=$req ->idNhomKhoangSan;
     $loaiHinhKhoangSanedit->save();
   

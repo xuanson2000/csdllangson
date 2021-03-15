@@ -102,12 +102,13 @@
    <tr style="background-color: #AAC1C6;">
    
     <th>Số GPTD</th>
+    <th>Ngày cấp phép</th>
     <th>Tên mỏ</th>
     <th>Tên Doanh nghiệp</th>
     <th>Vị trí hành chính</th>
     <th>Diện tích thăm dò</th>
     <th >Thời gian thăm dò</th>
-    <th>Lần thăm dò</th>
+ 
     <th>Chi tiết</th>
   </tr>
 </thead>
@@ -116,13 +117,14 @@
  <tr>
 
   <td>{{$hoSoCapPhepthamdo ->soGiayPhepThamDo}}</td>
+  <td>{{date('d-m-Y', strtotime($hoSoCapPhepthamdo ->ngayGiayPhep))}}</td>
   <td>{{$hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
   <td>{{$hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
   <td>{{$hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
   <td>{{$hoSoCapPhepthamdo->dienTichThamDo}} ha</td>
   <td>{{$hoSoCapPhepthamdo->thoiGianThamDo}} tháng</td>
 
-  <td style="text-align: center;" >{{$hoSoCapPhepthamdo->lanthamdo}}</td>
+
   <td style="text-align: center;"> 
     <a title="Xem chi tiết" href="{{route('chitietthamdo',[$hoSoCapPhepthamdo ->id])}}" > <i class="fa fa-list" aria-hidden="true"></i></a>
 

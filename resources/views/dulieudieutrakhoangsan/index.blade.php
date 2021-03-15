@@ -209,6 +209,18 @@
       @endforeach  
 
     </tbody>
+    <tfoot >
+    <tr>
+      <th style="color: blue;"></th>
+      <th style="color: blue;" ></th>
+      <th style="color: blue;"></th>
+      <th style="color: blue;"></th>
+      <th style="color: blue;"> </th>
+      <th style="color: blue;"> </th>
+     
+
+            </tr>
+  </tfoot>
 
   </table>
  </div>

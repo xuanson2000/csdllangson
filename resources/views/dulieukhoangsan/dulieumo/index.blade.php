@@ -268,7 +268,7 @@
     		<th>STT </th>
         <th>KÝ HIỆU MỎ</th>
     		<th>TÊN MỎ</th>
-    		<th>NHÓM KHOÁNG SẢN</th>
+    	
         <th>LOẠI KHOÁNG SẢN</th>
     		<th>VỊ TRÍ HÀNH CHÍNH</th>
         <th>CHI TIẾT</th>
@@ -281,7 +281,7 @@
         <td>{{$loop->index+1}}</td>
         <td>{{$viewseachs->kyHieuMo}}</td>
         <td>{{$viewseachs->tenMo}}</td>
-        <td>{{$viewseachs->loaiHinhKhoangSan->nhomKhoangSan->tenNhomKS}}</td>
+     
         <td>{{$viewseachs->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
         <td>{{$viewseachs->xaPhuong->tenXaPhuong}} - {{$viewseachs->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
         
@@ -304,7 +304,7 @@
         <th>STT</th>
         <th>KÝ HIỆU MỎ</th>
         <th>TÊN MỎ</th>
-        <th>NHÓM KHOÁNG SẢN</th>
+       
         <th>LOẠI KHOÁNG SẢN</th>
         <th>VỊ TRÍ HÀNH CHÍNH</th>
         <th>CHI TIẾT</th>
@@ -314,10 +314,10 @@
     <tbody>
       @foreach($dulieumos as $dulieumo)
       <tr>
-        <td>{{$loop->index+1}} - {{$dulieumo->id}}</td>
+        <td>{{$loop->index+1}}</td>
         <td>{{$dulieumo->kyHieuMo}}</td>
         <td>{{$dulieumo->tenMo}}</td>
-        <td>{{$dulieumo->loaiHinhKhoangSan->nhomKhoangSan->tenNhomKS}}</td>
+        
         <td>{{$dulieumo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
         <td>{{$dulieumo->xaPhuong->tenXaPhuong}} - {{$dulieumo->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
         

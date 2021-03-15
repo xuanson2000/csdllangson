@@ -148,10 +148,7 @@
                   <td>Đặc điểm khoáng sản</td>
                   <td> {{$chitietdulieumos->dacdiemKhoang}}</td>
                 </tr>
-                <tr>
-                  <td>Công tác tiến hành</td>
-                  <td>{{$chitietdulieumos->congTacTienHanh}}</td>
-                </tr>
+                
 
               </tbody>
             </table>
@@ -163,7 +160,7 @@
               <table class="table table-bordered" style="width: 86%;">
                 <thead>
                  <tr>
-                  <th colspan="3">Tổng trữ lượng : {{number_format($chitietdulieumos->truLuong)}} {{$chitietdulieumos->donVi}}</th>
+                  <th colspan="3">Tổng trữ lượng cấp phép khai thác : {{number_format($chitietdulieumos->truLuong)}} {{$chitietdulieumos->donVi}}</th>
                 </tr>
                   <tr>
                   
@@ -202,12 +199,13 @@
              <table class="table table-bordered" style="width: 86%;">
                 <thead>
                  <tr>
-                  <th  style="background-color: #3060B7;" colspan="3">Hợp đồng thu đất</th>
+                  <th  style="background-color: #3060B7;" colspan="3">Hợp đồng thuê đất</th>
                 </tr>
                   <tr>
                   
                     <th style="width: 100px;">Số HĐTĐ</th>
-                    <th style="width: 100px;">Tên mỏ</th>
+                   
+
                     <th style="width: 100px;">Doanh nghiệp</th>
                     <th>Ngày Thuê</th>
                     <th>Diện tích thuê</th>
@@ -219,7 +217,8 @@
                  @foreach($hoDongThueDat as $hoDongThueDats)
                  <tr>
                   <td> {{$hoDongThueDats->soHopDong}} </td>
-                  <td> {{$hoDongThueDats->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}} </td>
+              
+
                   <td> {{$hoDongThueDats->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}} </td>
                   <td> {{$hoDongThueDats->ngayThue}} </td>
                   <td> {{$hoDongThueDats->dienTich}} </td>
@@ -240,7 +239,7 @@
                   <tr>
                    <th style="width: 100px;">SỐ QĐ</th> 
                    <th style="width: 100px;">NGÀY QĐ</th>
-                   <th style="width: 100px;">TÊN MỎ</th>
+                   
                    <th>DOANH NGHIỆP</th>
 
                    <th>TỔNG TIỀN PHẢI NỘP </th>
@@ -254,7 +253,7 @@
                  <tr>
                   <td>{{$tiencapquyenkhaithacs->soqd}}</td>
                   <td> {{date('d-m-Y', strtotime($tiencapquyenkhaithacs->ngayquyetdinh))}}</td>
-                  <td>{{$tiencapquyenkhaithacs->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
+                
                   <td>{{$tiencapquyenkhaithacs->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}} </td>
                   <td>{{$tiencapquyenkhaithacs->tongtien}} VNĐ</td>
                   <td>{{$tiencapquyenkhaithacs->solannop}} Lần</td>
@@ -275,7 +274,8 @@
                  
                  <th style="width: 100px;">SỐ QĐ</th> 
                  <th style="width: 100px;">NGÀY QĐ</th>
-                 <th  style="width: 100px;">TÊN MỎ</th>
+                
+
                  <th>DOANH NGHIỆP</th>
 
                  <th>TỔNG KINH PHÍ CẢI TẠO PHỤC HỒI, MÔI TRƯỜNG</th>
@@ -290,7 +290,8 @@
                <tr>
                 <td>{{$tienkyquymoitruongs->soqd}}</td>
                 <td>{{$tienkyquymoitruongs->ngayquyetdinh}}</td>
-                <td>{{$tienkyquymoitruongs->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
+                
+
                 <td>{{$tienkyquymoitruongs->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}} </td>
                 <td>{{$tienkyquymoitruongs->tongtien}} VNĐ</td>
                 <td>{{$tienkyquymoitruongs->solannop}} Lần</td>

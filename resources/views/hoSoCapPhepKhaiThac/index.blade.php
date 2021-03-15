@@ -77,12 +77,13 @@
     	<tr style="background-color: #AAC1C6;">
        
     		<th>Số GPKH</th>
+        <th>Ngày cấp phép</th>
     		<th>Tên mỏ</th>
     		<th>Tên Doanh nghiệp</th>
     		<th>Vị trí hành chính</th>
     		<th>Thời gian khai thác</th>
     		
-    		<th>Lần cấp phép</th>
+    		
         <th>Chi tiết</th>
     	</tr>
     </thead>
@@ -90,7 +91,7 @@
     	@foreach($hoSoCapPhepKhaiThacs as $hoSoCapPhepKhaiThac)
     	<tr>
         <td>{{$hoSoCapPhepKhaiThac->soGiayPhepKhaiThac}}</td>
-
+       <td>{{date('d-m-Y', strtotime($hoSoCapPhepKhaiThac->ngaygiayphep))}}</td>
         <td>{{$hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}} - {{$hoSoCapPhepKhaiThac->id}}</td>
 
         @if($hoSoCapPhepKhaiThac->note==2)
@@ -108,7 +109,7 @@
     		<td>{{$hoSoCapPhepKhaiThac->thoigiancapphepkhaithac}} năm</td>
     		
     		
-    		<td style="text-align: center;">{{$hoSoCapPhepKhaiThac->lancapphep}} </td>
+    		
 
 
     		<td style="text-align: center;"> 

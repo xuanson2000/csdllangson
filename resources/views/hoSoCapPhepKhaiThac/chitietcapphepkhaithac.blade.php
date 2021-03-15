@@ -211,7 +211,7 @@
                   <td>{{$hoSoCapPhepKhaiThacid ->soGiayPhepKhaiThac}}</td>
                 </tr>
                 <tr>
-                  <td>Ngày giấy phép</td>
+                  <td>Ngày cấp phép khai thác</td>
                   <td> {{date('d-m-Y', strtotime($hoSoCapPhepKhaiThacid->ngaygiayphep))}} </td>
                 </tr>
                 <tr>

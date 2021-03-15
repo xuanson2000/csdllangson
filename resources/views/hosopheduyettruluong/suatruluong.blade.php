@@ -25,7 +25,7 @@
 				</h4>
 				<div class="row">
 					<div class="form-group col-md-6">
-						<label for="usr">file giấy phép  </label>
+						<label for="usr">file đính kèm  </label>
 						<input type="file" class="form-control" name="fileGiayPhep[]" multiple >
 						<br>
 						@foreach($filedinhkemgiaypheps as $filedinhkemgiayphep)
@@ -49,14 +49,14 @@
 
 			</div>
 			<div class="col-md-6" >
-				<h4 style="padding: 7px 7px 7px 7px; background-color: #8F8A9A;color: white;">Thông tin giấy phép</h4>
+				<h4 style="padding: 7px 7px 7px 7px; background-color: #8F8A9A;color: white;">Thông tin quyết định phê duyệt trữ lượng</h4>
 				<div class="row"> 
 					<div class="form-group col-md-6">
-						<label for="usr">Số giấy phép<span style="color: red;">(*)</span> </label>
+						<label for="usr">Số quyết định phê duyệt trữ lượng<span style="color: red;">(*)</span> </label>
 						<input type="text" class="form-control" name="soGiayPhepPheDuyet" value="{{$hoSoCapPhepPheDuyetTruLuongBD->soGiayPhepPheDuyet}}" required="">
 					</div>
 					<div class="form-group col-md-6">
-						<label for="usr">Ngày giấy phép<span style="color: red;">(*)</span> </label>
+						<label for="usr">Ngày quyết định phê duyệt trữ lượng<span style="color: red;">(*)</span> </label>
 						<input type="date" class="form-control" name="ngayGiayPhep" value="{{$hoSoCapPhepPheDuyetTruLuongBD->ngayGiayPhep}}" required="">
 					</div>
 				</div>

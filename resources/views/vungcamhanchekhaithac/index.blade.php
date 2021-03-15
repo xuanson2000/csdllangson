@@ -74,7 +74,7 @@
 
              <div class="form-group">
              	<label for="usr">file quyết định cấm </label>
-             	<input type="file" class="form-control" name="fileGiayPhep[]" multiple  required="">
+             	<input type="file" class="form-control" name="fileGiayPhep[]" multiple  =>
              </div>
 
             
@@ -125,16 +125,16 @@
  {{Session::get('messgxoa')}}</div>
  @endif
 
-
+<div>
   <h4 style="margin-bottom: 20px; margin-top: 20px;">DANH SÁCH DỮ LIỆU CẤM VÀ HẠN CHẾ KHAI THÁC</h4>
 
-<table id="idfff"  class="table table-bordered">
+<table  id="capphep"  class="display">
     <thead>
       <tr style="background-color: #AAC1C6;">
       	<th>STT</th>
       	<th style="width: 170px;">TÊN KHU VỰC</th>
       	<th>VỊ TRÍ HÀNH CHÍNH</th>
-      	<th>DIỆN TÍCH</th>      	
+      	<th>DIỆN TÍCH (Ha)</th>      	
       	<th>LÝ DO CẤM</th>
       	<th>FILE ĐÍNH KÈM</th>
         <th>THAO TÁC</th>
@@ -166,33 +166,33 @@
         </td>
       </tr>
       @endforeach  
-   
-      
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    </tfoot>
+    
+
   </table>
-
-
-
-
-
-
-
-
-
-</div>
-
 <script>
-
 
   $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#idfff tfoot th').each( function () {
+    $('#capphep tfoot th').each( function () {
       var title = $(this).text();
-      $(this).html( '<input type="text" placeholder="Tìm kiếm '+title+'" />' );
+      $(this).html( '<input type="text" placeholder=" '+title+'" />' );
     } );
     
     // DataTable
-    var table = $('#idfff').DataTable({
+    var table = $('#capphep').DataTable({
       initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
@@ -211,7 +211,25 @@
     
   } );
 
+
 </script>
+<style type="text/css">
+
+  tfoot input {
+    width: 100%;
+    
+  }
+   tfoot {
+        display: table-header-group;
+    }
+
+</style>
+
+</div>
+
+</div>
+
+
 
   @endsection
 

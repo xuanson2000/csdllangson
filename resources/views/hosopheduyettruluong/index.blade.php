@@ -107,7 +107,7 @@
     <thead>
     	<tr style="background-color: #AAC1C6;">
     	
-    		<th>Số GPTD</th>
+    		<th>Số QĐPDTL</th>
     		<th>Tên mỏ</th>
     		<th>Tên Doanh nghiệp</th>
     		<th>Vị trí hành chính</th>

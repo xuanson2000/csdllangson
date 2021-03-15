@@ -43,9 +43,12 @@
             </select>
           </div>
 
-
+          <div class="form-group">
+            <label for="usr">Ký hiệu khoáng sản <span style="color: red;">(*)</span></label>
+            <input type="text" class="form-control" name="kyhieu" required="" value="{{$loaiHinhKhoangSanedit->kyhieu}}">
+          </div>
         		<div class="form-group">
-            <label for="usr">Tên loại hình khoáng sản <span style="color: red;">(*)</span></label>
+            <label for="usr">Tên khoáng sản <span style="color: red;">(*)</span></label>
             <input type="text" class="form-control" name="tenLoaiHinhKS" required="" value="{{$loaiHinhKhoangSanedit->tenLoaiHinhKS}}">
           </div>
             <button type="submit" class="btn btn-warning"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu lại</button>

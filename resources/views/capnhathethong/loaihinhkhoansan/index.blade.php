@@ -77,6 +77,7 @@
    	<thead>
    		<tr>
    			<th>STT</th>
+        <th>KÝ HIỆU</th>
    			<th>TÊN KHOÁNG SẢN</th>
    			<th>NHÓM KHOÁNG SẢN</th>
    			<th>THAO TÁC</th>
@@ -88,6 +89,7 @@
    		@foreach($loaihinhkhoangsanids as $loaihinhkhoangsanid)
    		<tr>
    			<td style="text-align: center;">{{$loop->index+1}}</td>
+        <td>{{$loaihinhkhoangsanid->kyhieu}}</td>
    			<td>{{$loaihinhkhoangsanid->tenLoaiHinhKS}}</td>
    			<td>{{$loaihinhkhoangsanid->nhomKhoangSan->tenNhomKS}}</td>
    			<td style="text-align: center;"> 
@@ -146,6 +148,10 @@
           @endif
 
           <div class="form-group">
+            <label for="usr">Ký hiệu khoáng sản <span style="color: red;">(*)</span></label>
+            <input type="text" class="form-control" name="kyhieu" required="">
+          </div>
+          <div class="form-group">
             <label for="usr">Tên loại hình khoáng sản <span style="color: red;">(*)</span></label>
             <input type="text" class="form-control" name="tenLoaiHinhKS" required="">
           </div>
@@ -170,7 +176,8 @@
   	<thead>
   		<tr>
   			<th>STT</th>
-  			<th>TÊN LOẠI HÌNH KHOÁNG SẢN</th>
+        <th>KÝ HIỆU</th>
+  			<th>TÊN KHOÁNG SẢN</th>
   			<th>NHÓM KHOÁNG SẢN</th>
   			<th>THAO TÁC</th>
   		</tr>
@@ -181,12 +188,15 @@
     	@foreach($loaihinhkhoangsans as $loaihinhkhoangsan)
     	<tr>
     		<td>{{$loop->index+1}}</td>
+        <td>{{$loaihinhkhoangsan->kyhieu}}</td>
     		<td>{{$loaihinhkhoangsan->tenLoaiHinhKS}}</td>
     		<td>{{$loaihinhkhoangsan->nhomKhoangSan->tenNhomKS}}</td>
-    		<td> 
-    			<a title="Sửa" href="{{route('sualoaihinhkhoangsan',[$loaihinhkhoangsan->id])}}"><img alt="Sửa" src="public/anh/b_edit.png"></a>  
-    			<a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"  href="{{route('xoaloaihinhkhoangsan',[$loaihinhkhoangsan->id])}}"><img alt="Xóa" src="public/anh/b_drop.png"></a>
-    		</td>
+    	
+        <td style="text-align: center;"> 
+          <a title="Sửa" href="{{route('sualoaihinhkhoangsan',[$loaihinhkhoangsan->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
+          <a title="Xóa" onclick="return xacnhanxoa('Bạn có chắc chắn muốn xóa không')"  href="{{route('xoaloaihinhkhoangsan',[$loaihinhkhoangsan->id])}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </td>
+
     	</tr>
     	@endforeach
    

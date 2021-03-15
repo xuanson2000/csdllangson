@@ -108,15 +108,15 @@
                <tbody>
 
                  <tr>
-                  <td>Số giấy phép phê duyệt trữ lượng </td>
+                  <td>Số quyết định phê duyệt trữ lượng </td>
                   <td>{{$hoSoPheDuyetTruLuongid ->soGiayPhepPheDuyet}}</td>
                 </tr>
                 <tr>
-                  <td>Ngày giấy phép</td>
+                  <td>Ngày quyết định</td>
                   <td>{{date('d-m-Y', strtotime($hoSoPheDuyetTruLuongid->ngayGiayPhep))}} </td>
                 </tr>
                 <tr>
-                  <td>Tên giấy phép</td>
+                  <td>Tên quyết định</td>
                   <td>{{$hoSoPheDuyetTruLuongid ->tenGiayPhep}}</td>
                 </tr>
                 <tr>

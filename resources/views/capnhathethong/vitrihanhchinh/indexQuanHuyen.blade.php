@@ -17,7 +17,7 @@
 </style>
 
 <div class="container" style="background-color: white; padding: 20px 200px 20px 100px; width: 100%;">
-   <h4 style="width: 80%;">CẬP NHẬT VỊ TRI QUẬN HUYỆN TỈNH LẠNG SƠN</h4>    
+   <h4 style="width: 80%;">CẬP NHẬT QUẬN HUYỆN TỈNH LẠNG SƠN</h4>    
 
 
   @if(Session::has('messgsua'))
