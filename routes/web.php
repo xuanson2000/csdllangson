@@ -645,6 +645,15 @@ Route::get('/chi-tiet-ho-so-tham-do-khoang-san/{id}',[
     'middleware'=>'Checkquyen:them_ho_so_cap_phep_khai_thac'
   ]);
 
+  // Route::get('/them-ho-so-cap-phep-khai-thac-tan-thu',[
+  //   'as'=>'themhosocapphepkhaithactanthu',
+  //   'uses'=>'controllerHoSoCapPhepKhaiThac@themhosocapphepkhaithactanthu',
+  //   'middleware'=>'Checkquyen:them_ho_so_cap_phep_khai_thac'
+  // ]);
+
+
+
+
   Route::get('/xoa-ho-so-cap-phep-khai-thac/{id}',[
     'as'=>'xoahosocapphepkhaithac',
     'uses'=>'controllerHoSoCapPhepKhaiThac@xoahosocapphepkhaithac',
@@ -714,7 +723,58 @@ Route::get('/chi-tiet-ho-so-tham-do-khoang-san/{id}',[
   'middleware'=>'Checkquyen:them-khoang-san'
 ]);
 
- 
+ /// câp ppheps tận thu
+
+  Route::get('/ho-so-cap-phep-khai-thac-tan-thu',[
+    'as'=>'capphepkhaithactanthu',
+    'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@index',
+    'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+  ]);
+
+   Route::get('/ho-so-cap-phep-khai-thac-tan-thu-them',[
+    'as'=>'capphepkhaithactanthuthem',
+    'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@add',
+    'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+  ]);
+
+   Route::post('/ho-so-cap-phep-khai-thac-tan-thu-them-post',[
+    'as'=>'capphepkhaithactanthuthempost',
+    'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@addpost',
+    'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+  ]);
+
+ Route::get('/chi-tiet-ho-so-cap-phep-khai-thac-tan-thu/{id}',[
+    'as'=>'capphepkhaithactanthuchitiet',
+    'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@chitiet',
+    'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+  ]);
+
+
+ Route::get('/xoa-ho-so-cap-phep-khai-thac-tan-thu/{id}',[
+    'as'=>'capphepkhaithactanthuxoa',
+    'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@delete',
+    'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+  ]);
+
+
+ Route::get('/sua-ho-so-cap-phep-khai-thac-tan-thu/{id}',[
+  'as'=>'capphepkhaithactanthuedit',
+  'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@edit',
+  'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+]);
+
+ Route::post('/sua-ho-so-cap-phep-khai-thac-tan-thu-post/{id}',[
+  'as'=>'capphepkhaithactanthueditpost',
+  'uses'=>'controllerHoSoCapPhepKhaiThacTanThu@editpost',
+  'middleware'=>'Checkquyen:xem_ho_so_cap_phep_khai_thac'
+
+]);
 
  // danh sách hồ sơ biến động'
 
@@ -1140,8 +1200,18 @@ Route::get('/bao-cao-tinh-hinh-khai-thac-pdf/{loahoso}/{quanhuyen}/{khoangsan}',
   'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
 ]);
 
+Route::get('/bao-cao-hoat-dong-khoang-san',[
+  'as'=>'baocaohoatdongkhoangsan',
+  'uses'=>'controllerBaocaothongke@baocaohoatdongkhoangsan',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
 
 
+Route::get('/bao-cao-cap-phep-khoang-san-moi-nhat',[
+  'as'=>'baocaocapphepmoinhat',
+  'uses'=>'controllerBaocaothongke@baocaocapphepmoinhat',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
 
 
 

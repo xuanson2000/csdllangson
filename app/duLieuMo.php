@@ -35,4 +35,10 @@ class duLieuMo extends Model
         return $this->belongsTo('App\chucVu','id_chucVu','id');
     }
 
+    //liên kết hồ sơ khai thác tận thu
+           
+    public function hoSoCapPhepKhaiThacTanThu(){
+        return $this->hasManey('App\hoSoCapPhepKhaiThacTanThu','id_mo','id');
+    }
+
 }

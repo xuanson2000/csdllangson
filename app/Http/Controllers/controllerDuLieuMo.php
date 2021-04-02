@@ -105,21 +105,7 @@ $tiencapquyenkhaithac=tiencapquyenkhaithac::where('id_mo',$id)->get();
        $taodoys = $req->toadoy; 
       if($taodoxs!=null && $taodoys!=null ){
 
-
-
-       
-      //  foreach($taodoxs as $key => $value) {
-
-      //  	\DB::table('toaDo')->insert([
-   			// 	'id_loaihoso'=>'1',
-   			// 	'id_HoSo'=> $duLieuMo->id,
-   			// 	'toaDoX' => $taodoxs[$key],
-   			// 	'toaDoY' => $taodoys[$key]
-   			// ]); 
-
-      // }
-        
-
+      
        foreach (array_combine($taodoxs, $taodoys) as $taodox => $taodoy) {
        	
        	\DB::table('toaDo')->insert([
@@ -132,23 +118,7 @@ $tiencapquyenkhaithac=tiencapquyenkhaithac::where('id_mo',$id)->get();
        }
          }
 
-   		// foreach ($taodoxs as $taodox && $taodoys as $taodoy) {
-   		// 	\DB::table('toaDo')->insert([
-   		// 		'id_loaihoso'=>'1',
-   		// 		'id_HoSo'=> $duLieuMo->id,
-   		// 		'toaDoX' => $taodox
-   		// 	]); 
-
-
-     //       	\DB::table('toaDo')->insert([
-   		// 		'id_loaihoso'=>'1',
-   		// 		'id_HoSo'=> $duLieuMo->id,
-   		// 		'toaDoY' => $taodoy
-   		// 	]);
-          
-   		// } 
-
-   		
+   	
 
     	return redirect('khoang-san/du-lieu-mo-khoang-san')->with('messgthem','Thêm thành công');
 

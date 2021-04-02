@@ -96,6 +96,7 @@
                 <li><a href="{{route('thamdokhoangsan')}}"><i class="fa fa-circle-o"></i>Thăm dò khoáng sản</a></li>
                 <li><a href="{{route('truluongkhoangsan')}}"><i class="fa fa-circle-o"></i>Phê duyệt trữ lượng</a></li>
                 <li><a href="{{route('capphepkhaithac')}}"><i class="fa fa-circle-o"></i>Cấp phép khai thác</a></li>
+                <li><a href="{{route('capphepkhaithactanthu')}}"><i class="fa fa-circle-o"></i>Cấp phép khai thác tận thu</a></li>
                 <li><a href="{{route('biendongkhoangsan')}}"><i class="fa fa-circle-o"></i>Thu hồi khoáng sản</a></li>
 
               </ul>
@@ -153,7 +154,7 @@
 
                 <!-- <li><a href="{{route('nopngansach')}}"><i class="fa fa-circle-o"></i> Nộp ngân sách khoáng sản </a></li> -->
                
-                <li><a href="{{route('baocaoketquakhaithackshangnam')}}"><i class="fa fa-circle-o"></i>Nộp ngân sách hàng năm</a></li>
+                <li><a href="{{route('baocaoketquakhaithackshangnam')}}"><i class="fa fa-circle-o"></i>Báo cáo khoáng sản hàng năm</a></li>
               
               </ul>
             </li>

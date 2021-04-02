@@ -35,7 +35,6 @@ class hoSoCapPhepKhaiThac extends Model
 		return $this->hasManey('App\nopNganSachKhoangSan','id_giayPhepKhaiThac','id');
 	}
 	
-
 	public function hoDongThueDat(){
 		return $this->hasManey('App\hoDongThueDat','id_hosocapphepkhaithac','id');
 	}

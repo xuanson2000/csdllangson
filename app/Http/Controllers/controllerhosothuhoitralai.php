@@ -19,7 +19,7 @@ class controllerhosothuhoitralai extends Controller
 		
 		$hoSoCapPhepKhaiThacs=hoSoCapPhepKhaiThac::where('thuhoitralai','1')->orderBy('id','DESC')->get();
 
-		
+	//dd($hoSoCapPhepKhaiThacs);
 
 		return view('hosothuhoitralai.index',['hoSoCapPhepKhaiThacs'=>$hoSoCapPhepKhaiThacs]);
 

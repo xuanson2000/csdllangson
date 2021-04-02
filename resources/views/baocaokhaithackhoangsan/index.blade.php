@@ -37,9 +37,9 @@
     <thead>
       <tr style="background-color: #AAC1C6;">
         <th>STT</th>
-        <th>KÝ HIỆU MỎ</th>
+       <th>SỐ GPKT</th>
         <th>TÊN MỎ</th>
-        <th>NHÓM KHOÁNG SẢN</th>
+
         <th>LOẠI KHOÁNG SẢN</th>
         <th>VỊ TRÍ HÀNH CHÍNH</th>
         <th>BÁO CÁO KHOÁNG SẢN</th>
@@ -47,17 +47,16 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($dulieumos as $dulieumo)
+      @foreach($hoSoCapPhepKhaiThacs as $hoSoCapPhepKhaiThac1)
       <tr>
         <td>{{$loop->index+1}}</td>
-        <td>{{$dulieumo->kyHieuMo}}</td>
-        <td>{{$dulieumo->tenMo}}</td>
-        <td>{{$dulieumo->loaiHinhKhoangSan->nhomKhoangSan->tenNhomKS}}</td>
-        <td>{{$dulieumo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
-        <td>{{$dulieumo->xaPhuong->tenXaPhuong}} - {{$dulieumo->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
+        <td>{{$hoSoCapPhepKhaiThac1->soGiayPhepKhaiThac}}</td>
+         <td>{{$hoSoCapPhepKhaiThac1->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
+        <td>{{$hoSoCapPhepKhaiThac1->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
+        <td>{{$hoSoCapPhepKhaiThac1->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}} - {{$hoSoCapPhepKhaiThac1->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}} -Tỉnh Lạng Sơn </td>
         
 
-        <td><a href="{{route('chitietbaokhaothachangnam',[$dulieumo->id])}}" > Xem chi tiết</a></td>
+        <td><a href="{{route('chitietbaokhaothachangnam',[$hoSoCapPhepKhaiThac1->id])}}" > CHI TIẾT</a></td>
         
       </tr>
       @endforeach  
@@ -112,8 +111,8 @@
 		<form action="{{route('thembaocaokhaithachangnam')}}" method="POST" enctype="multipart/form-data">
 			<input type="hidden"  name="_token" value="{{csrf_token()}}" >
 			<div class="row" style="width: 90%; margin: 0 auto; background-color: #E2EBFF;">
-				<div class="col-md-12" >
-					<h4 style=" padding: 7px 7px 7px 7px; background-color: #8F8A9A;color: white;">-----------</h4>
+				<div class="col-md-12"  style="margin-top: 10px;">
+					
 					<div class="row"> 
 						<div class="form-group col-md-4">
 							<label for="usr">Năm báo cáo<span style="color: red;">(*)</span> </label>
@@ -141,7 +140,7 @@
 					</div>
 					<div class="row"> 
 						<div class="form-group col-md-8">
-							<label for="usr">Trữ lượng khai thác<span style="color: red;">(*)</span> </label>
+							<label for="usr">Trữ lượng khai thác năm báo cáo<span style="color: red;">(*)</span> </label>
 							<input type="number" step=".01" class="form-control" name="truLuongKhaiThac">
 						</div>
 						<div class="form-group col-md-4">
@@ -158,23 +157,39 @@
                    
 					<div class="row"> 
 						<div class="form-group col-md-6">
-							<label for="usr">Thuế tài nguyên </label>
+							<label for="usr">Thuế tài nguyên (vnđ)</label>
 							<input type="number" step=".01" class="form-control" name="thueTaiNguyen">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="usr">Thuế GTGT </label>
+							<label for="usr">Thuế GTGT (vnđ) </label>
 							<input type="number" step=".01" class="form-control" name="thueGiaTriGiaTang">
 						</div>
 					</div>
 					<div class="row"> 
 						<div class="form-group col-md-6">
-							<label for="usr">Phí môi trường </label>
+							<label for="usr">Phí bảo vệ môi trường (vnđ)</label>
 							<input type="number" step=".01" class="form-control" name="phiBaoVeMoiTruong">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="usr">Tiền thuê đất </label>
+							<label for="usr">Thuê đất (vnđ)</label>
 							<input type="number" step=".01" class="form-control" name="thueThueDat">
 						</div>
+
+						<div class="form-group col-md-6">
+							<label for="usr">Tiền cấp quyền khai thác (vnđ)</label>
+							<input type="number" step=".01" class="form-control" name="tienCapQuyen">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="usr">Thuê môn bài (vnđ)</label>
+							<input type="number" step=".01" class="form-control" name="thuemonbai">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="usr">Nộp phạt (vnđ)</label>
+							<input type="number" step=".01" class="form-control" name="nopphat">
+						</div>
+
 					</div>
 
 					<div class="form-group">

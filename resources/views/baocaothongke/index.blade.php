@@ -36,6 +36,20 @@
       </a>
     </div>
 
+     <div class="col-md-12" style="margin-top: 10px;">
+     <div class="btn-group">
+    <button type="button" class="btn btn-primary">Báo cáo Bộ tình hình khai thác KS</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="{{route('baocaocapphepmoinhat')}}">Biểu số 1: CPKT mới</a></li>
+      <li><a href="{{route('baocaohosodangkhaothac')}}">Biểu số 2: Giấy CPKT còn hiệu lực</a></li>
+      <li><a href="{{route('baocaohoatdongkhoangsan')}}">Biểu số 3: Hoạt động KS</a></li>
+    </ul>
+  </div>
+    </div>
+
   </div>
 
     <div class="col-md-8" >

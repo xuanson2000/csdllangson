@@ -32,7 +32,7 @@
   <table class="table table-bordered" style="width: 86%;">
                 <thead>
                 	 <tr>
-                  <th colspan="3">{{$tenmo->tenMo}}</th>
+                  <th colspan="3">Số GPKT: {{$idks->soGiayPhepKhaiThac}} ______ {{$idks->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</th>
                 </tr>
                
                   <tr>

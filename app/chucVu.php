@@ -30,5 +30,12 @@ class chucVu extends Model
         return $this->hasManey('App\hoSoBienDongKhoangSan','id_chucVu','id');
      }
      
+     // kết nối hồ sơ khai thác tân thu
+     public function hoSoCapPhepKhaiThacTanThu(){
+        return $this->hasManey('App\hoSoCapPhepKhaiThacTanThu','id_chucVu','id');
+    }
+     
+
+     
 
 }

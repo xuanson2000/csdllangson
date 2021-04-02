@@ -201,7 +201,7 @@ $(document).ready(function(){
 </div>
 
 
-<div style="margin-top: 40px; padding:50px 20px 20px 20px;"  id="showFive" class="myDiv">
+<div style="margin-top: 0px; padding:50px 20px 20px 20px;"  id="showFive" class="myDiv">
 	
 	<form action="{{route('dieuchinhkhaithac',[$idhosokhaithac])}}" method="POST" enctype="multipart/form-data">
 			<input type="hidden"  name="_token" value="{{csrf_token()}}" >
@@ -310,11 +310,13 @@ $(document).ready(function(){
 							<input type="file" class="form-control" name="fileBanDo[]" multiple>
 						</div>
 					</div>
+
+					<br>
+				<button style="float: right; margin-top: 10px; margin-right: 20px;" type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> Lưu lại</button>
 					
 				</div>
 
-				<br>
-				<button style="float: right; margin-top: 10px; margin-right: 20px;" type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i> Lưu lại</button>
+				
 			</div>
 
 
@@ -464,7 +466,7 @@ $(document).ready(function(){
 	<div class="row" style=" margin-top: 10px;">
 		<label class="control-label col-sm-3" for="email">Lý do thu hồi</label>
 		<div class="col-sm-8">
-			<input type="date" class="form-control" id="email" placeholder="Nhập Ngày bắt đầu thu hồi tại đây" name="lydo">
+			<input type="text" class="form-control" id="email" name="lydo">
 		</div>
 	</div>
 

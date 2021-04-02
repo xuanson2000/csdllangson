@@ -257,11 +257,18 @@ public function kqbaocaonamkhaithacexcel($sonamconlai){
 
 	public function baocaohosodangkhaothac(){
 
-	 $reportHoSoDangKhaithac=hoSoCapPhepKhaiThac::where('thuhoitralai','=',null)->orderBy('id','DESC')->paginate(10);
+	// $reportHoSoDangKhaithac=hoSoCapPhepKhaiThac::where('thuhoitralai','=',null)->orderBy('id','DESC')->get();
+ $reportHoSoDangKhaithacub=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('coQuanPheDuyet',3)->where('thuhoitralai','=',null)->select('hoSoCapPhepKhaiThac.*')->get();
 
-		return view('baocaothongke.baocaohosodangkhaothac',['reportHoSoDangKhaithac'=>$reportHoSoDangKhaithac]);
+ $reportHoSoDangKhaithacbo=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('coQuanPheDuyet',1)->where('thuhoitralai','=',null)->select('hoSoCapPhepKhaiThac.*')->get();
+
+// dd( $reportHoSoDangKhaithacbo);
+
+		return view('baocaothongke.baocaohosodangkhaothac',['reportHoSoDangKhaithacub'=>$reportHoSoDangKhaithacub,'reportHoSoDangKhaithacbo'=>$reportHoSoDangKhaithacbo]);
 
 	}
+
+
 	
 	public function baocaohosodangkhaothacexcel(){
 
@@ -475,7 +482,39 @@ public function kqbaocaonamkhaithacexcel($sonamconlai){
 		
 
 	}
+
 	
+
+	public function baocaohoatdongkhoangsan(){
+		
+		$namnow= Carbon::now()->year;
+
+		 $baocaohoatdong2=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('coQuanPheDuyet',3)->where('thuhoitralai','=',null)->select('loaiKhoangSan')->distinct()->get();
+
+		 $baocaohoatdong1=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('coQuanPheDuyet',1)->where('thuhoitralai','=',null)->select('loaiKhoangSan')->distinct()->get();
+		
+		// $baocaohoatdong=duLieuMo::groupBy('tenMo')->get();
+
+
+		//$users = duLieuMo::select('loaiKhoangSan')->distinct()->get();
+
+//dd($baocaohoatdong2);
+
+		return view('baocaothongke.baocaohoatdongkhoangsan',['namnow'=>$namnow,'baocaohoatdong2'=>$baocaohoatdong2,'baocaohoatdong1'=>$baocaohoatdong1]);
+
+	}
+
+
+
+	public function baocaocapphepmoinhat(){
+		$txtthongkehosos=hoSoCapPhepKhaiThac::join('hoSoCapPhepPheDuyetTruLuong', 'hoSoCapPhepKhaiThac.id_hoSoCapPhepPheDuyetTruLuong', '=','hoSoCapPhepPheDuyetTruLuong.id')->join('hoSoCapPhepthamdo', 'hoSoCapPhepthamdo.id', '=','hoSoCapPhepPheDuyetTruLuong.id_giayPhepThamDo')->join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->where('coQuanPheDuyet',3)->where('thuhoitralai','=',null)->whereYear('ngaygiayphep',2020)->select('hoSoCapPhepKhaiThac.*')->get();
+
+		
+//dd($txtthongkehosos);
+		return view('baocaothongke.baocaocapphepmoinhat',['txtthongkehosos'=>$txtthongkehosos]);
+
+	}
+
 
 
 }

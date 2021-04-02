@@ -34,10 +34,11 @@
  <div class="col-md-10 form-group" style="margin-top: 10px;">
   <h4 style=" color: white; font-weight: bold;">DANH SÁCH HỒ SƠ CẤP PHÉP KHAI THÁC KHOÁNG SẢN</h4>
 </div>
-
 <div class="col-md-2 form-group" style=" margin-top: 10px;">
   <a href="{{route('themhosocapphepkhaithac')}}" style="float: right;" class="btn btn-warning" role="button"> <i class="fa fa-plus-square" aria-hidden="true"></i> Thêm hồ sơ</a>
 </div>
+
+
 
 	
 	

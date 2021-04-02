@@ -158,6 +158,8 @@ class controllerHoSoCapPhepKhaiThac extends Controller
 
 	}
 
+
+
 	
 	public function xoahosocapphepkhaithac($id){
 
@@ -509,7 +511,7 @@ public function suahosokhaithacpost($id,Request $req){
 	$hoSoCapPhepkhaithacedit ->save();
 
 
-	        $toaDoEdits=DB::table('toaDo')->where('id_loaihoso',1)->where('id_hoso',$id)->get();
+	  $toaDoEdits=DB::table('toaDo')->where('id_loaihoso',1)->where('id_hoso',$id)->get();
 
    // dd($toaDoEdits);
         foreach($toaDoEdits as $toaDoEdit){
@@ -528,15 +530,20 @@ public function suahosokhaithacpost($id,Request $req){
 
         if($req->hasFile('fileGiayPhep')){
 
-        	$filedinhkemgiaypheps=fileDinhKemGiayPhep::where('id_HoSo',$id)->where('id_loaiHoSo',4)->get();
 
-        	foreach ( $filedinhkemgiaypheps as $filedinhkemgiayphep) {
-        		unlink("public/tailieu/".$filedinhkemgiayphep->tenFile);
-        		$filedinhkemgiayphep->delete();
+        	$filedinhkemgiaypheps1=fileDinhKemGiayPhep::where('id_HoSo',$id)->where('id_loaiHoSo',4)->get();
+
+        	if($filedinhkemgiaypheps1!=''){
+        		foreach ( $filedinhkemgiaypheps1 as $filedinhkemgiayphep1) {
+        			unlink("public/tailieu/".$filedinhkemgiayphep1->tenFile);
+        			$filedinhkemgiayphep1->delete();
+        		}
         	}
 
+        	
 
         	$filedinhkemgiaypheps = $req->file('fileGiayPhep');
+
 
         	foreach ($filedinhkemgiaypheps as $filedinhkemgiayphep) {
         		$tenAnh = $filedinhkemgiayphep->getClientOriginalName();
@@ -547,7 +554,7 @@ public function suahosokhaithacpost($id,Request $req){
         		}
         		$filedinhkemgiayphep->move("public/tailieu/",$tenAnhmoi);
 
-        		\DB::table('filedinhkemgiayphep')->insert([
+        		\DB::table('fileDinhKemGiayPhep')->insert([
         			'id_HoSo' => $id,
         			'id_loaiHoSo'=>'4',
         			'tenFile'=> $tenAnhmoi
@@ -555,6 +562,10 @@ public function suahosokhaithacpost($id,Request $req){
         	}
 
         }
+
+
+
+     
 
 
         if($req->hasFile('fileBanDo')){
@@ -604,7 +615,7 @@ public function suahosokhaithacpost($id,Request $req){
 		$hosothuhoitralaimo->soquyetdinh= $req->soquyetdinh;
 		
 		$hosothuhoitralaimo->tengiayphep= $req->tengiayphep;
-		$hosothuhoitralaimo->ngaygiayphepthuhoi= $req->ngaygiayphepthuhoi;
+		$hosothuhoitralaimo->ngayquyetdinh= $req->ngaygiayphepthuhoi;
 		$hosothuhoitralaimo->lydo= $req->lydo;
 		$hosothuhoitralaimo->id_khaithac= $idhosokhaithac;
 

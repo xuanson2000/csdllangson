@@ -353,7 +353,8 @@
                   <td>File scan giấy phép </td>
                     <td>
                   <?php 
-                  $filedinhkemgiayphepolds=App\fileDinhKemGiayPhep::where('id_HoSo',$hosokhiathacold->id)->where('id_loaihoso','4')->where('note','1')->get();
+                  $filedinhkemgiayphepolds=App\fileDinhKemGiayPhep::where('id_HoSo',$hosokhiathacold->id)->where('id_loaiHoSo','4')->where('note','1')->get();
+                  
 
                   ?>
                   @foreach($filedinhkemgiayphepolds as $filedinhkemgiayphepold)
@@ -370,7 +371,7 @@
                     <td>
                   <?php 
                  
-                 $filedinhkembandoolds=App\fileDinhKemBanDo::where('id_hoso',$hosokhiathacold->id)->where('id_loaihoso','4')->where('note','1')->get();
+                 $filedinhkembandoolds=App\fileDinhKemBanDo::where('id_HoSo',$hosokhiathacold->id)->where('id_loaiHoSo','4')->where('note','1')->get();
 
                   ?>
                   @foreach($filedinhkembandoolds as $filedinhkembandoold)

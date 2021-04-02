@@ -38,27 +38,32 @@
     <thead>
     	<tr style="background-color: #AAC1C6;">
     		<th>STT</th>
-    		<th>Số GPKH</th>
-    		<th>Tên mỏ</th>
-    		<th>Tên Doanh nghiệp</th>
-    		<th>Vị trí hành chính</th>
-            <th>Năm bắt đầu khai thác</th>
-    		<th>Thời gian khai thác</th>
-    		<th>Chi tiết</th>
+    		<th>Số GPKH, Ngày GP</th>
+    		<th>Loại khoáng sản</th>
+    		<th>Tên đơn vị được cấp phép</th>
+    		<th>Vị trí khai thác</th>
+            <th>Diện tích (ha)</th>
+    		<th>Trữ lượng(m3, tấn)</th>
+    		<th>Công xuất(m3, tấn)/ năm</th>
+            <th>Thời hạn GP (năm)</th>
     	
     	</tr>
     </thead>
     <tbody>
-    	@foreach($reportHoSoDangKhaithac as $txtthongkehoso)
+        <tr>
+            <td colspan="8" style="font-weight: bold;">I. Giấy phép khai thác do UBND tỉnh Lạng Sơn cấp</td>
+        </tr>
+
+    	@foreach($reportHoSoDangKhaithacub as $txtthongkehoso)
     	<tr>
     		<td>{{$loop->index+1}}</td>
        
-          <td>{{$txtthongkehoso->soGiayPhepKhaiThac}}</td>
+             <td>{{$txtthongkehoso->soGiayPhepKhaiThac}} <br> {{date('d-m-Y', strtotime($txtthongkehoso->ngaygiayphep))}}</td>
 
-        
+         <td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
 
 
-    		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
+    		
 
     		@if($txtthongkehoso->note==2)
     		<?php
@@ -70,23 +75,59 @@
     		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
     		@endif
 
-    		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
+    		<td>{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}  {{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$txtthongkehoso->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
 
-        <td>{{date('d-m-Y', strtotime($txtthongkehoso->ngaygiayphep))}}</td>    
-    		<td>{{$txtthongkehoso->thoigiancapphepkhaithac}} năm</td>
+            <td>{{$txtthongkehoso->dienTichKhaiThac}}</td>    
+    		<td>{{number_format($txtthongkehoso->truLuongKhaiThac)}}</td>
+                <td>{{number_format($txtthongkehoso->congSuatKhaiThac)}} </td>
+    		<td>{{$txtthongkehoso->thoigiancapphepkhaithac}} </td>
     		
-    		
-    		<td><a href="{{route('chitietcapphepkhaithac',[$txtthongkehoso ->id])}}" > XEM</a></td>
+    	
     	
     	</tr>
         @endforeach
 
+         <tr>
+            <td colspan="8" style="font-weight: bold;">II. Giấy phép khai thác do Bộ Tài nguyên và Môi trường cấp</td>
+        </tr>
+
+        @foreach($reportHoSoDangKhaithacbo as $txtthongkehosobo)
+        <tr>
+            <td>{{$loop->index+1}}</td>
+       
+             <td>{{$txtthongkehosobo->soGiayPhepKhaiThac}} <br> {{date('d-m-Y', strtotime($txtthongkehosobo->ngaygiayphep))}}</td>
+
+         <td>{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
+
+
+            
+
+            @if($txtthongkehosobo->note==2)
+            <?php
+            $iddn=App\doanhNghiepChuyenNhuong::where('id_doanhnghiep',$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->id)->first();
+
+            ?>
+            <td>{{$iddn->tenDoanhNghiep}}</td>
+            @else
+            <td>{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
+            @endif
+
+            <td>{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}  {{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
+
+            <td>{{$txtthongkehosobo->dienTichKhaiThac}}</td>    
+            <td>{{number_format($txtthongkehosobo->truLuongKhaiThac)}}</td>
+                <td>{{number_format($txtthongkehosobo->congSuatKhaiThac)}} </td>
+            <td>{{$txtthongkehosobo->thoigiancapphepkhaithac}} </td>
+            
         
+        
+        </tr>
+        @endforeach
       
     </tbody>
   </table>
 
- {{ $reportHoSoDangKhaithac->links()}}
+
 
 
 </div>

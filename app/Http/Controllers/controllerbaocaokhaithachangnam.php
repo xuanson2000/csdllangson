@@ -29,11 +29,14 @@ class controllerbaocaokhaithachangnam extends Controller
 		// $hoSoCapPhepKhaiThacs =hoSoCapPhepKhaiThac::all();
 		// $dulieumos=duLieuMo::all();
 
-		$nopNganSachKhoangSans =nopNganSachKhoangSan::where('id_mo',$id)->get();
+		$nopNganSachKhoangSans =nopNganSachKhoangSan::where('id_giayPhepKhaiThac',$id)->get();
+		$idks=hoSoCapPhepKhaiThac::find($id);
+		
 		$tenmo=duLieuMo::select('tenMo')->find($id);
+		//dd($idks);
       
 
-		return view('baocaokhaithackhoangsan.chitietbaokhaothachangnam',['nopNganSachKhoangSans'=>$nopNganSachKhoangSans,'tenmo'=>$tenmo]);
+		return view('baocaokhaithackhoangsan.chitietbaokhaothachangnam',['nopNganSachKhoangSans'=>$nopNganSachKhoangSans,'tenmo'=>$tenmo,'idks'=>$idks]);
 		unset($nopNganSachKhoangSans);
 		
 	} 
@@ -44,9 +47,10 @@ class controllerbaocaokhaithachangnam extends Controller
 
 		$nopNganSachKhoangSandelete = nopNganSachKhoangSan::find($id);
 		$nopNganSachKhoangSandelete->delete();
+		if($nopNganSachKhoangSandelete->file !=null){
 	
 		unlink("public/tailieu/".$nopNganSachKhoangSandelete->file);
-		
+		}
 
 		return redirect()->back()->with('messgxoa','Xóa thành công');
 		unset($nopNganSachKhoangSandelete);
@@ -61,6 +65,7 @@ class controllerbaocaokhaithachangnam extends Controller
 
       $hoSoCapPhepKhaiThacid=hoSoCapPhepKhaiThac::find($req ->id_giayPhepKhaiThac);
 		$nopNganSachKhoangSan = new nopNganSachKhoangSan;
+		$nopNganSachKhoangSan->id_giayPhepKhaiThac=$hoSoCapPhepKhaiThacid->id;
 		$nopNganSachKhoangSan ->id_mo =$hoSoCapPhepKhaiThacid->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->id;
 		$nopNganSachKhoangSan ->nam =$req ->nam;
 		$nopNganSachKhoangSan->truLuongKhaiThac=$req ->truLuongKhaiThac;
@@ -69,6 +74,8 @@ class controllerbaocaokhaithachangnam extends Controller
 		$nopNganSachKhoangSan ->phiBaoVeMoiTruong =$req ->phiBaoVeMoiTruong;
 		$nopNganSachKhoangSan ->thueGiaTriGiaTang =$req ->thueGiaTriGiaTang;
 		$nopNganSachKhoangSan ->thueThueDat =$req ->thueThueDat;
+		$nopNganSachKhoangSan ->tienCapQuyen =$req ->tienCapQuyen;
+		$nopNganSachKhoangSan ->thuemonbai =$req ->thuemonbai;
 
 		if($req->hasFile('image')){
 

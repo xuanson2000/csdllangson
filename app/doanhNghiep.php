@@ -21,6 +21,11 @@ class doanhNghiep extends Model
      public function doanhNghiepChuyenNhuong(){
 		return $this->hasManey('App\doanhNghiepChuyenNhuong','id_doanhnghiep','id');
 	}
+    // liên hồ sơ tận thu
+
+     public function hoSoCapPhepKhaiThacTanThu(){
+        return $this->hasManey('App\hoSoCapPhepKhaiThacTanThu','id_doanhNghiep','id');
+     }
 
 }
                                                                                                                                                                                                                                                   
