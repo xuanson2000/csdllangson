@@ -18,22 +18,43 @@
 <div class="container" style="background-color: white; padding: 20px 20px 20px 30px; width: 100%;">
   
   <div class="row" style="margin-left: 1px; margin-right: 1px; margin-top:0px;background-color: #525C72; color: white; margin-bottom: 10px;">
-<div class="col-md-10"><h4> DANH SÁCH HỒ SƠ CẤP PHÉP KHOÁNG SẢN NĂM 2020</h4></div>
-<div class="col-md-2">  <div class="btn-group" style="margin-top:3px;" >
-	<button type="button" class="btn btn-warning"><i class="fa fa-cloud-download" aria-hidden="true"></i> Xuất file</button>
-	<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-		<span style="height: 17px;" class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-		<li><a href="{{route('baocaohosodangkhaothacexcel')}}"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất file Excel</a></li>
-		<li><a href="{{route('baocaohosodangkhaothacpdf')}}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Xuất file PDF</a></li>
-	</ul>
-</div>
-</div>
-</div>
+<div class="col-md-10" ><h4 > BÁO CÁO TÌNH HÌNH CẤP GIẤY PHÉP KHAI THÁC KHOÁNG SẢN THEO NĂM 
+
+    <form action="{{route('baocaocapphepmoinhat')}}" method="get">
+
+        <div class="col-md-5 form-group" style="margin-left: -8px;  margin-top: 10px;">
+            <label style=" float:left; color: #DDE1F8;">Nhập năm cần báo cáo</label>
+            <input type="number" class="form-control" id="usr" name="nambaocao" required="">
+        </div>
+        <button style="margin-top: 35px; margin-left:10px;" type="submit" class="btn btn-primary"><img src="public/anh/search-3-16.png"> Tìm kiếm</button>
+
+        @if(count($txtthongkehosos)>0)
+        <div class="btn-group" style="margin-top: 35px; margin-left:10px;" >
+          <button type="button" class="btn btn-warning"><i class="fa fa-cloud-download" aria-hidden="true"></i> Xuất file</button>
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+            <span style="height: 17px;" class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <!-- <li><a href=""> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất file Excel</a></li> -->
+            <li><a href="{{route('baocaocapphepmoinhatpdf',[$nambaocao])}}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Xuất file PDF</a></li>
+        </ul>
+    </div>
+
+    @endif
+
+</form>
+
+</h4>
 
 
 
+</div>
+
+</div>
+
+
+@if(  $txtthongkehosos !=null)
+<h4>BẢNG SỐ LIỆU TỔNG HỢP VỀ TÌNH HÌNH CẤP GIẤY PHÉP KHAI THÁC KHOÁNG SẢN NĂM {{$nambaocao}}</h4>
 <table class="table table-bordered">
     <thead>
     	<tr style="background-color: #AAC1C6;">
@@ -90,7 +111,7 @@
     </tbody>
   </table>
 
-
+@endif
 
 
 </div>

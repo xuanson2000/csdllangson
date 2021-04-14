@@ -29,12 +29,12 @@
 
 		</div>
 
-		<p style="margin-bottom:20px; margin-top: 20px; font-weight: bold; text-align: center; color: blue; font-size: 14px;">BẢNG TỔNG HỢP SỐ LIỆU GIẤY PHÉP KHAI THÁC KHOÁNG SẢN CÒN HIỆU LỰC TRÊN ĐỊA BÀN TỈNH LẠNG SƠN
-			 
+		<p style="margin-bottom:20px; margin-top: 20px; font-weight: bold; text-align: center; color: blue; font-size: 14px;">BẢNG SỐ LIỆU TỔNG HỢP VỀ TÌNH HÌNH CẤP GIẤY PHÉP KHAI THÁC KHOÁNG SẢN NĂM {{$nambaocao}}
+			
 		</p>
 
-  
-		<table class="table table-bordered">
+		
+<table class="table table-bordered">
     <thead>
     	<tr style="background-color: #AAC1C6;">
     		<th>STT</th>
@@ -50,11 +50,9 @@
     	</tr>
     </thead>
     <tbody>
-        <tr>
-            <td colspan="8" style="font-weight: bold;">I. Giấy phép khai thác do UBND tỉnh Lạng Sơn cấp</td>
-        </tr>
+        
 
-    	@foreach($reportHoSoDangKhaithacub as $txtthongkehoso)
+    	@foreach($txtthongkehosos as $txtthongkehoso)
     	<tr>
     		<td>{{$loop->index+1}}</td>
        
@@ -87,45 +85,11 @@
     	</tr>
         @endforeach
 
-         <tr>
-            <td colspan="8" style="font-weight: bold;">II. Giấy phép khai thác do Bộ Tài nguyên và Môi trường cấp</td>
-        </tr>
-
-        @foreach($reportHoSoDangKhaithacbo as $txtthongkehosobo)
-        <tr>
-            <td>{{$loop->index+1}}</td>
-       
-             <td>{{$txtthongkehosobo->soGiayPhepKhaiThac}} <br> {{date('d-m-Y', strtotime($txtthongkehosobo->ngaygiayphep))}}</td>
-
-         <td>{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->loaiHinhKhoangSan->tenLoaiHinhKS}}</td>
-
-
-            
-
-            @if($txtthongkehosobo->note==2)
-            <?php
-            $iddn=App\doanhNghiepChuyenNhuong::where('id_doanhnghiep',$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->id)->first();
-
-            ?>
-            <td>{{$iddn->tenDoanhNghiep}}</td>
-            @else
-            <td>{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}}</td>
-            @endif
-
-            <td>{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}  {{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->tenXaPhuong}}-{{$txtthongkehosobo->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->xaPhuong->quanHuyen->tenQuanHuyen}}- Tỉnh Lạng Sơn</td>
-
-            <td>{{$txtthongkehosobo->dienTichKhaiThac}}</td>    
-            <td>{{number_format($txtthongkehosobo->truLuongKhaiThac)}}</td>
-                <td>{{number_format($txtthongkehosobo->congSuatKhaiThac)}} </td>
-            <td>{{$txtthongkehosobo->thoigiancapphepkhaithac}} </td>
-            
         
-        
-        </tr>
-        @endforeach
       
     </tbody>
   </table>
+
 
 
 		<div class="ttsv" style="width: 90%; margin:0 auto; margin-top:0px; margin-bottom: 30px;" >

@@ -1213,7 +1213,11 @@ Route::get('/bao-cao-cap-phep-khoang-san-moi-nhat',[
   'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
 ]);
 
-
+Route::get('/bao-cao-cap-phep-khoang-san-moi-nhat-pdf/{nambaocao}',[
+  'as'=>'baocaocapphepmoinhatpdf',
+  'uses'=>'controllerBaocaothongke@baocaocapphepmoinhatpdf',
+  'middleware'=>'Checkquyen:thong_ke_thoi_gian_kt'
+]);
 
 
 
