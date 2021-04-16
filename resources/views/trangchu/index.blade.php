@@ -119,7 +119,7 @@
              
                 <li><a style="font-weight: bold;" class="btn btn-outline boo" href="{{route('dangnhap')}}"><img style="margin-bottom: 4px;"  src="public/1x/ks.png"> THÔNG TIN HỆ THỐNG</a></li>
                 <li><a style="font-weight: bold;"  class="btn btn-outline boo" href="https://laravel-news.com"><img style="margin-bottom: 4px;"  src="public/1x/use.png"> QUẢN TRỊ NGƯỜI DÙNG</a></li>
-                   <li><a style="font-weight: bold;" class="btn btn-outline boo"  href=""><img style="margin-bottom: 4px;"  src="public/1x/lis.png"> HƯỚNG DẪN</a></li>
+                   <li><a style="font-weight: bold;" class="btn btn-outline boo"  href="public/anh/huongdansudunghethongkhoangsan.pdf" target="_blank"><img style="margin-bottom: 4px;"  src="public/1x/lis.png"> HƯỚNG DẪN</a></li>
             </ul>
         </div>
         </div>

@@ -420,7 +420,7 @@ public function kqbaocaonamkhaithacexcel($sonamconlai){
 
             }else{
 
-            	 $baocaotinhhinhkt=hoSoCapPhepthamdo::join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->join('xaPhuong', 'duLieuMo.viTriXa', '=','xaPhuong.id')->where('id_quanHuyen',$quanhuyen)->where('loaiKhoangSan',$tenkhoangsan)->select('hoSoCapPhepKhaiThac.*')->get();
+            	 $baocaotinhhinhkt=hoSoCapPhepthamdo::join('duLieuMo', 'duLieuMo.id', '=','hoSoCapPhepthamdo.id_mo')->join('xaPhuong', 'duLieuMo.viTriXa', '=','xaPhuong.id')->where('id_quanHuyen',$quanhuyen)->where('loaiKhoangSan',$tenkhoangsan)->select('hoSoCapPhepthamdo.*')->get();
 
             }
 
@@ -439,7 +439,9 @@ public function kqbaocaonamkhaithacexcel($sonamconlai){
 
 		}
 
-		//dd($baocaotinhhinhkt);
+		dd($baocaotinhhinhkt);
+
+		
 
 
 		return view('baocaothongke.baocaotinhinhkhaithac',['baocaotinhhinhkt'=>$baocaotinhhinhkt,'quanHuyens'=>$quanHuyens,'nhomKhoangSans'=>$nhomKhoangSans,'loaihoso'=>$loaihoso,'KSName'=>$KSName,'quanhuyen'=>$quanhuyen,'qhname'=>$qhname,'namnow'=>$namnow,'tenkhoangsan'=>$tenkhoangsan]);

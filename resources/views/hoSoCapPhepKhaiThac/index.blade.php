@@ -93,7 +93,7 @@
     	<tr>
         <td>{{$hoSoCapPhepKhaiThac->soGiayPhepKhaiThac}}</td>
        <td>{{date('d-m-Y', strtotime($hoSoCapPhepKhaiThac->ngaygiayphep))}}</td>
-        <td>{{$hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}} - {{$hoSoCapPhepKhaiThac->id}}</td>
+        <td>{{$hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
 
         @if($hoSoCapPhepKhaiThac->note==2)
         <?php

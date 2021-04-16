@@ -1,0 +1,12 @@
+Hướng dẫn cài đặt hệ thống lên server
+Bước 1: Cài đặt môi trường
++ Cài xampp 
++ Cài Hệ quản trị csdl: postgidSQL 9.6
++ Cài đặt Composer Laravel
+
+Bước 2: coppy project csdllangsan vào thư mục htdoc trong thư mục xampp vừa cài đặt ở trên.
+Bước 3: vào file .env thay đổi tên database và mật khẩu kết nối với hệ quản trị csdl
+Bước 4: Chạy Composer update thư viện cho project: vào thư mục project csdllangson mở Composer lên chạy lệnh
+
+composer install
+composer update --no-scripts

@@ -179,9 +179,9 @@
         <th >TÊN MỎ</th>
         <th>DOANH NGHIỆP</th>
         
-        <th>TỔNG TIỀN PHẢI NỘP </th>
+        <th>TỔNG TIỀN PHẢI NỘP (VNĐ)</th>
         <th> SỐ LẦN NỘP </th>
-          <th>SỐ TIỀN NỘP LẦN ĐẦU</th>
+          <th>SỐ TIỀN NỘP LẦN ĐẦU (VNĐ)</th>
    
         <th style="width:70px;">THAO TÁC</th>
       </tr>
@@ -195,9 +195,9 @@
       	<td> {{date('d-m-Y', strtotime($tiencapquyenkhaithac->ngayquyetdinh))}}</td>
       	<td>{{$tiencapquyenkhaithac->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
       	<td>{{$tiencapquyenkhaithac->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}} </td>
-      	<td>{{$tiencapquyenkhaithac->tongtien}} VNĐ</td>
+      	<td>{{number_format($tiencapquyenkhaithac->tongtien)}} </td>
       	<td>{{$tiencapquyenkhaithac->solannop}} Lần</td>
-      	<td>{{$tiencapquyenkhaithac->sotiennoplandau}} VNĐ</td>
+      	<td>{{number_format($tiencapquyenkhaithac->sotiennoplandau)}} </td>
        
       	<td>
        

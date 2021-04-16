@@ -177,10 +177,10 @@
         <th >TÊN MỎ</th>
         <th>DOANH NGHIỆP</th>
         
-        <th>TỔNG KINH PHÍ CẢI TẠO PHỤC HỒI, MÔI TRƯỜNG</th>
+        <th>TỔNG KINH PHÍ CẢI TẠO PHỤC HỒI, MÔI TRƯỜNG (VNĐ)</th>
         <th>SỐ LẦN KÝ QUỸ </th>
-          <th>SỐ TIỀN KÝ QUỸ LẦN ĐẦU</th>
-          <th>SỐ TIỀN KÝ QUỸ HÀNG NĂM</th>
+          <th>SỐ TIỀN KÝ QUỸ LẦN ĐẦU (VNĐ)</th>
+          <th>SỐ TIỀN KÝ QUỸ HÀNG NĂM (VNĐ)</th>
    
         <th style="width:70px;">THAO TÁC</th>
       </tr>
@@ -194,10 +194,10 @@
       	<td>{{$tienkyquymoitruong->ngayquyetdinh}}</td>
       	<td>{{$tienkyquymoitruong->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->duLieuMo->tenMo}}</td>
       	<td>{{$tienkyquymoitruong->hoSoCapPhepKhaiThac->hoSoCapPhepPheDuyetTruLuong->hoSoCapPhepthamdo->doanhNghiep->tenDoanhNghiep}} </td>
-      	<td>{{$tienkyquymoitruong->tongtien}} VNĐ</td>
+      	<td>{{number_format($tienkyquymoitruong->tongtien)}} </td>
       	<td>{{$tienkyquymoitruong->solannop}} Lần</td>
-      	<td>{{$tienkyquymoitruong->tiennoplandau}} VNĐ</td>
-       <td>{{$tienkyquymoitruong->tiennoplanhai}} VNĐ</td>
+      	<td>{{number_format($tienkyquymoitruong->tiennoplandau)}} </td>
+       <td>{{number_format($tienkyquymoitruong->tiennoplanhai)}} </td>
       	<td>
        
           <a title="Sửa" href="{{route('suaquyphuchoimoitruong',[$tienkyquymoitruong->id])}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>  
