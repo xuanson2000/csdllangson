@@ -245,6 +245,8 @@ $doanhNghiepEdit = doanhNghiep::find($hoSoCapPhepthamdoEdit->doanhNghiep->id);
         $doanhNghiepEdit ->save();
     
         $hoSoCapPhepthamdoEdit ->soGiayPhepThamDo =$req ->soGiayPhepThamDo;
+
+        
         $hoSoCapPhepthamdoEdit ->ngayGiayPhep =$req ->ngayGiayPhep;
         $hoSoCapPhepthamdoEdit ->tenGiayPhep =$req ->tenGiayPhep;
         $hoSoCapPhepthamdoEdit ->nguoiKy =$req ->nguoiKy;

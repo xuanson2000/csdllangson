@@ -6,7 +6,7 @@
 
 <div class="model">
 	<div class="row" style="background-color: #4276BB; width: 95%; margin: 0 auto;">
-    <h4 style="float: left; margin: 10px 10px 10px 10px; color: white;">Hồ sơ cấp phép thăm dò: <span style="color: #FFB724; font-weight: bold;">  {{$hoSoCapPhepthamdoid->duLieuMo->tenMo}}  {{$hoSoCapPhepthamdoid->id}}</span></h4>
+    <h4 style="float: left; margin: 10px 10px 10px 10px; color: white;">Hồ sơ cấp phép thăm dò: <span style="color: #FFB724; font-weight: bold;">  {{$hoSoCapPhepthamdoid->duLieuMo->tenMo}} </span></h4>
           
     <a  title="Đóng"  href="{{route('thamdokhoangsan')}}" type="button" style="float: right; margin-top: 5px; margin-right:5px; margin-bottom: 5px;" class="btn btn-info" ><i class="fa fa-times" aria-hidden="true"></i></a>
 
